@@ -18,21 +18,117 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JBCadastroCategoria = new javax.swing.JButton();
+        JBCadastroProduto = new javax.swing.JButton();
+        JBGerenciaEstoque = new javax.swing.JButton();
+        JBRelatorio = new javax.swing.JButton();
+        JBSair = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
+
+        JBCadastroCategoria.setText("Cadastrar Categoria");
+        JBCadastroCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCadastroCategoriaActionPerformed(evt);
+            }
+        });
+
+        JBCadastroProduto.setText("Cadastrar Produto");
+        JBCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCadastroProdutoActionPerformed(evt);
+            }
+        });
+
+        JBGerenciaEstoque.setText("Gerenciar Estoque");
+        JBGerenciaEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerenciaEstoqueActionPerformed(evt);
+            }
+        });
+
+        JBRelatorio.setText("Relatório");
+        JBRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBRelatorioActionPerformed(evt);
+            }
+        });
+
+        JBSair.setText("Sair");
+        JBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(JBSair))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JBCadastroProduto, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JBCadastroCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JBRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JBGerenciaEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(135, 135, 135)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(JBCadastroCategoria)
+                .addGap(18, 18, 18)
+                .addComponent(JBCadastroProduto)
+                .addGap(18, 18, 18)
+                .addComponent(JBGerenciaEstoque)
+                .addGap(18, 18, 18)
+                .addComponent(JBRelatorio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(JBSair)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JBCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroCategoriaActionPerformed
+        // TODO add your handling code here:
+        //Instancia a tela "FrmCadastroCategoria"
+        FrmCadastroCategoria objeto = new FrmCadastroCategoria();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBCadastroCategoriaActionPerformed
+
+    private void JBCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroProdutoActionPerformed
+        // TODO add your handling code here:
+        FrmCadastroProduto objeto = new FrmCadastroProduto();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBCadastroProdutoActionPerformed
+
+    private void JBRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRelatorioActionPerformed
+        // TODO add your handling code here:
+        FrmRelatorio objeto = new FrmRelatorio();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBRelatorioActionPerformed
+
+    private void JBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_JBSairActionPerformed
+
+    private void JBGerenciaEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciaEstoqueActionPerformed
+        // TODO add your handling code here:
+        FrmGerenciaEstoque objeto = new FrmGerenciaEstoque();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBGerenciaEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +166,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBCadastroCategoria;
+    private javax.swing.JButton JBCadastroProduto;
+    private javax.swing.JButton JBGerenciaEstoque;
+    private javax.swing.JButton JBRelatorio;
+    private javax.swing.JButton JBSair;
     // End of variables declaration//GEN-END:variables
 }

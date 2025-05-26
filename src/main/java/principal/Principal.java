@@ -11,7 +11,7 @@ public class Principal {
             a.getConnection();
             System.out.println("Conectado com sucesso gurizada!");
         } catch (Exception e) {
-            System.out.println("Deu certo não...");
+            System.out.println("Ocorreu um erro na conexão...");
         }
      // Instancia a interface gráfica;
     FrmMenuPrincipal objetotela = new FrmMenuPrincipal();
