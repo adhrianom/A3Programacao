@@ -12,7 +12,7 @@ public class CategoriaDAO {
     }
 //seguindo o categoria.java por enquanto
     public void inserir(Categoria categoria) { 
-        String sql = "INSERT INTO produtos (nome, tamanho, embalagem) VALUES (?,?,?)";
+        String sql = "INSERT INTO produtos (nome,tamanho,embalagem) VALUES (?,?,?)";
         
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
