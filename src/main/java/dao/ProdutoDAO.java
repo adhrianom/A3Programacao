@@ -28,10 +28,9 @@ public class ProdutoDAO {
             stmt.setInt(4, se.getQuantidadeEstoque());
             stmt.setInt(5, se.getQuantidadeMinima());
             stmt.setInt(6, se.getQuantidadeMaxima());
-            stmt.setInt(7, produto.getIdProduto());
-            stmt.setString(8, produto.getCategoria().getNome());
-            stmt.setString(9, produto.getCategoria().getTamanho());
-            stmt.setString(10, produto.getCategoria().getEmbalagem());
+            stmt.setString(7, produto.getCategoria().getNome());
+            stmt.setString(8, produto.getCategoria().getTamanho());
+            stmt.setString(9, produto.getCategoria().getEmbalagem());
             stmt.executeUpdate();
             
         } catch (SQLException e) {
@@ -52,11 +51,10 @@ public class ProdutoDAO {
             stmt.setInt(4, se.getQuantidadeEstoque());
             stmt.setInt(5, se.getQuantidadeMinima());
             stmt.setInt(6, se.getQuantidadeMaxima());
-            stmt.setInt(7, produto.getIdProduto());
-            stmt.setString(8, produto.getCategoria().getNome());
-            stmt.setString(9, produto.getCategoria().getTamanho());
-            stmt.setString(10, produto.getCategoria().getEmbalagem());
-            stmt.setInt(11, se.getId());
+            stmt.setString(7, produto.getCategoria().getNome());
+            stmt.setString(8, produto.getCategoria().getTamanho());
+            stmt.setString(9, produto.getCategoria().getEmbalagem());
+            stmt.setInt(10, se.getId());
             stmt.executeUpdate();
             
         } catch (SQLException e) {

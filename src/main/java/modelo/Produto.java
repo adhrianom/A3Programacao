@@ -16,10 +16,9 @@ public class Produto extends itemEstoque{
         this.categoria = categoria;
     }
 
-    public Produto(String unidade, int idProduto, Categoria categoria, String nome, double precoUnitario) {
+    public Produto(String unidade, Categoria categoria, String nome, double precoUnitario) {
         super(nome, precoUnitario);
         this.unidade = unidade;
-        this.idProduto = idProduto;
         this.categoria = categoria;
     }
 
@@ -29,14 +28,6 @@ public class Produto extends itemEstoque{
 
     public void setUnidade(String unidade) {
         this.unidade = unidade;
-    }
-
-    public int getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
     }
 
     public Categoria getCategoria() {
