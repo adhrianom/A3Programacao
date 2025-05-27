@@ -2,7 +2,7 @@ package visao;
 
 
 public class FrmGerenciaEstoque extends javax.swing.JFrame {
-
+//gabriel
     /**
      * Creates new form FrmGerenciaEstoque
      */

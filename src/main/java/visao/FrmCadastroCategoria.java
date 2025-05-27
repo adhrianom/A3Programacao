@@ -2,7 +2,7 @@ package visao;
 
 
 public class FrmCadastroCategoria extends javax.swing.JFrame {
-
+ //gb
     /**
      * Creates new form FrmCadastroCategoria
      */
