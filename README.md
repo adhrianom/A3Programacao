@@ -8,5 +8,5 @@
 <br>Ahron Stoco Simões - 10724261491 (git: ahronstoco) </br>
 <br>Eduardo Souza Jeremias - 10724262460 (git: eduardosjeremias) </br>
 <br>Gabriel Rodrigues Victurino - 10725113959 (git: gabriel-victurino) </br> 
-<br>Gustavo Antônio de Oliveira - 1072516190 (git: gustavooliveira174) </br>
+
 
