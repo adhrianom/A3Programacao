@@ -1,4 +1,7 @@
 package visao;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 
 public class FrmCadastroCategoria extends javax.swing.JFrame {
@@ -9,8 +12,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }
 
     Categoria categoria = new Categoria(); // Criação de vinculo com a Classe Categoria.
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -56,7 +58,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText(" ");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabel2.setText("Nome:");
@@ -81,15 +83,18 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         });
 
         JBRemover.setText("Remover");
+        JBRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBRemoverActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
+        JTCategoria.setAutoCreateRowSorter(true);
         JTCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nome", "Tamanho", "Embalagem"
@@ -109,21 +114,19 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(202, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JTFEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(202, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(30, 30, 30))
@@ -187,7 +190,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_JCTamanhoActionPerformed
 
     private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
-        
+
     }//GEN-LAST:event_JTFNomeActionPerformed
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
@@ -195,24 +198,64 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             String nome = "";
             String embalagem = "";
             String tamanho = "";
-            if (this.JTFNome.getText().length() < 3){
+
+            // Interceptando possíveis problemas
+            if (this.JTFNome.getText().length() < 3) {
                 throw new Mensagem("O nome da categoria deve conter mais de 3 caractéres.");
-            }else{
+            } else {
                 nome = JTFNome.getText();
             }
             if (this.JTFEmbalagem.getText().length() < 3) {
                 throw new Mensagem("A embalagem deve conter mais de 3 caractéres.");
-            }else{
+            } else {
                 embalagem = JTFEmbalagem.getText();
             }
-            if (JCTamanho.getSelectedIndex() == 0) {
-                
+
+            Object selected = JCTamanho.getSelectedItem();
+            if (selected == null) {
+                throw new Mensagem("Selecione um tamanho.");
+            } else {
+                tamanho = selected.toString();
             }
-        } catch{
+
             
+            // Adicionando as informações na table
+            DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
+            model.addRow(new Object[]{nome, tamanho, embalagem});
+
             
+            // Setando os valores iniciais.
+            JTFNome.setText("");
+            JTFEmbalagem.setText("");
+            JCTamanho.setSelectedItem(0);
+
+            JOptionPane.showMessageDialog(null, "Categoria adicionada!");
+
+        } catch (Mensagem e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_JBAdicionarActionPerformed
+
+    private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
+        // Selecionando as rows(linhas) da JTable
+        int[] selectedRows = JTCategoria.getSelectedRows();
+
+        // Caso o usuário não escolha uma linha para deletar.
+        if (selectedRows.length == 0) {
+            JOptionPane.showMessageDialog(null, "Selecione um linha para apagar.");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
+        
+        // Removendo a linha
+        for (int i = selectedRows.length - 1; i >= 0; i--) {
+            model.removeRow(selectedRows[i]);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Categoria apagada.");
+    }//GEN-LAST:event_JBRemoverActionPerformed
 
     /**
      * @param args the command line arguments
