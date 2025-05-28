@@ -2,16 +2,22 @@ package visao;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import dao.CategoriaDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Categoria;
 
 public class FrmCadastroCategoria extends javax.swing.JFrame {
 
-    public FrmCadastroCategoria() {
+    public FrmCadastroCategoria() throws SQLException {
         initComponents();
         this.categoria = new Categoria();
+        this.dao = new CategoriaDAO();
     }
 
-    Categoria categoria = new Categoria(); // Criação de vinculo com a Classe Categoria.
+    Categoria categoria = new Categoria();
+    CategoriaDAO dao = new CategoriaDAO(); // Criação de vinculo com a Classe Categoria.
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -58,7 +64,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText(" ");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabel2.setText("Nome:");
@@ -89,7 +95,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         JTCategoria.setAutoCreateRowSorter(true);
         JTCategoria.setModel(new javax.swing.table.DefaultTableModel(
@@ -117,15 +123,9 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JTFEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JTFEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(202, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,7 +146,12 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
                         .addComponent(JBRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(JBFechar)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,12 +222,14 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             } else {
                 tamanho = selected.toString();
             }
-
+            
             
             // Adicionando as informações na table
             DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
             model.addRow(new Object[]{nome, tamanho, embalagem});
-
+            
+            categoria = new Categoria(nome, tamanho, embalagem);
+            dao.inserir(categoria);
             
             // Setando os valores iniciais.
             JTFNome.setText("");
@@ -287,7 +294,11 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmCadastroCategoria().setVisible(true);
+                try {
+                    new FrmCadastroCategoria().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FrmCadastroCategoria.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

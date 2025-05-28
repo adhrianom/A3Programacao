@@ -5,22 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriaDAO {
-    private Connection conexao;
+    private Connection con;
 
-    public CategoriaDAO(Connection conexao) {
-        this.conexao = conexao;
+    public CategoriaDAO() throws SQLException{
+        this.con = new ConnectionFactory().getConnection();
     }
-//seguindo o categoria.java por enquanto
+    
     public void inserir(Categoria categoria) { 
-        String sql = "INSERT INTO produtos (nome,tamanho,embalagem) VALUES (?,?,?)";
+        String sql = "INSERT INTO categoria(nome,tamanho,embalagem) VALUES (?,?,?)";
         
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
             
             stmt.setString(1, categoria.getNome());
             stmt.setString(2, categoria.getTamanho());
             stmt.setString(3, categoria.getEmbalagem());
-            stmt.executeUpdate();
+            stmt.execute();
+            stmt.close();
             
         } catch (SQLException e) {
             System.err.println("Erro ao inserir categoria " + e.getMessage());
@@ -28,7 +28,7 @@ public class CategoriaDAO {
     }
     
     public void alterar(Categoria categoria) {
-        String sql = "UPDATE produtos SET nome = ?, tamanho = ?, embalagem = ? WHERE id = ?";
+        String sql = "UPDATE categoria SET nome = ?, tamanho = ?, embalagem = ? WHERE id = ?";
         
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -44,7 +44,7 @@ public class CategoriaDAO {
     }
     
     public void apagar(int id) {
-        String sql = "DELETE FROM produtos WHERE id = ?";
+        String sql = "DELETE FROM categoria WHERE id = ?";
         
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

@@ -1,5 +1,9 @@
 package visao;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 //gabriel
     /**
@@ -71,7 +75,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(JBSair))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JBCadastroProduto, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,7 +96,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addComponent(JBGerenciaEstoque)
                 .addGap(18, 18, 18)
                 .addComponent(JBRelatorio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(JBSair)
                 .addContainerGap())
         );
@@ -103,7 +107,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void JBCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroCategoriaActionPerformed
         // TODO add your handling code here:
         //Instancia a tela "FrmCadastroCategoria"
-        FrmCadastroCategoria objeto = new FrmCadastroCategoria();
+        FrmCadastroCategoria objeto = null;
+        try {
+            objeto = new FrmCadastroCategoria();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         objeto.setVisible(true);
     }//GEN-LAST:event_JBCadastroCategoriaActionPerformed
 

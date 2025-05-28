@@ -9,9 +9,9 @@ public class Principal {
         try {
             ConnectionFactory a = new ConnectionFactory();
             a.getConnection();
-            System.out.println("Conectado com sucesso gurizada!");
+            System.out.println("Conectado com sucesso!");
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro na conexão...");
+            System.out.println("Ocorreu um erro na conexão.");
         }
      // Instancia a interface gráfica;
     FrmMenuPrincipal objetotela = new FrmMenuPrincipal();

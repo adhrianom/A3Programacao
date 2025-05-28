@@ -16,7 +16,7 @@ public class ProdutoDAO {
     }
     
     public void inserir(Produto produto) { 
-        String sql = "INSERT INTO produtos (Nome, Preço Unitário, Unidade, Quantidade de Estoque, Quantidade Mínima, "
+        String sql = "INSERT INTO produto (Nome, Preço Unitário, Unidade, Quantidade de Estoque, Quantidade Mínima, "
                 + "Quantidade Máxima, Id, Categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection conn = ConnectionFactory.getConnection();
@@ -39,7 +39,7 @@ public class ProdutoDAO {
     }
     
     public void alterar(Produto produto) {
-        String sql = "UPDATE produtos SET Nome = ?, Preço Unitário = ?, Unidade = ?, Quantidade de Estoque = ?, Quantidade Mínima = ?, "
+        String sql = "UPDATE produto SET Nome = ?, Preço Unitário = ?, Unidade = ?, Quantidade de Estoque = ?, Quantidade Mínima = ?, "
                 + "Quantidade Máxima = ? Id = ?, Categoria = ? WHERE id = ?";
         
         try (Connection conn = ConnectionFactory.getConnection();
@@ -63,7 +63,7 @@ public class ProdutoDAO {
     }
     
     public void apagar(int id) {
-        String sql = "DELETE FROM produtos WHERE id = ?";
+        String sql = "DELETE FROM produto WHERE id = ?";
         
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
