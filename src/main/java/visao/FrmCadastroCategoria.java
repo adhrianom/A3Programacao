@@ -249,28 +249,22 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
         // Selecionando as rows(linhas) da JTable
-        
-        String nome = "";
-        String embalagem = "";
-        String tamanho = "";
-
-            
-        int[] selectedRows = JTCategoria.getSelectedRows();
+           
+        int selectedRow = JTCategoria.getSelectedRow();
 
         // Caso o usuário não escolha uma linha para deletar.
-        if (selectedRows.length == 0) {
+        if (selectedRow == -1) {
             JOptionPane.showMessageDialog(null, "Selecione um linha para apagar.");
             return;
         }
 
         DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
-        categoria = new Categoria(nome, tamanho, embalagem);
-        dao.apagar(categoria);
+        int idCategoria = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+        
+        dao.apagar(idCategoria);
         
         // Removendo a linha
-        for (int i = selectedRows.length - 1; i >= 0; i--) {
-            model.removeRow(selectedRows[i]);
-        }
+        model.removeRow(selectedRow);
         
         JOptionPane.showMessageDialog(null, "Categoria apagada.");
     }//GEN-LAST:event_JBRemoverActionPerformed
