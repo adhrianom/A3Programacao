@@ -248,7 +248,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
-        // Selecionando as rows(linhas) da JTable
+        // Selecionando as rows(linhas) da JTable;
            
         int selectedRow = JTCategoria.getSelectedRow();
 
