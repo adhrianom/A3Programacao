@@ -64,7 +64,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText(" ");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabel2.setText("Nome:");
@@ -95,7 +95,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         JTCategoria.setAutoCreateRowSorter(true);
         JTCategoria.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,7 +103,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Tamanho", "Embalagem"
+                "ID", "Nome", "Tamanho", "Embalagem"
             }
         ));
         jScrollPane2.setViewportView(JTCategoria);
@@ -122,11 +122,6 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JTFEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(202, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(30, 30, 30))
@@ -148,9 +143,15 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
                         .addComponent(JBFechar)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JTFEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JCTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -203,6 +204,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             String nome = "";
             String embalagem = "";
             String tamanho = "";
+            
 
             // Interceptando possíveis problemas
             if (this.JTFNome.getText().length() < 3) {
@@ -223,13 +225,14 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
                 tamanho = selected.toString();
             }
             
+            categoria = new Categoria(nome, tamanho, embalagem);
+            dao.inserir(categoria);
+            
+            int id = categoria.getIdCategoria();
             
             // Adicionando as informações na table
             DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
-            model.addRow(new Object[]{nome, tamanho, embalagem});
-            
-            categoria = new Categoria(nome, tamanho, embalagem);
-            dao.inserir(categoria);
+            model.addRow(new Object[]{id, nome, tamanho, embalagem});
             
             // Setando os valores iniciais.
             JTFNome.setText("");
@@ -246,6 +249,12 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
         // Selecionando as rows(linhas) da JTable
+        
+        String nome = "";
+        String embalagem = "";
+        String tamanho = "";
+
+            
         int[] selectedRows = JTCategoria.getSelectedRows();
 
         // Caso o usuário não escolha uma linha para deletar.
@@ -255,6 +264,8 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         }
 
         DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
+        categoria = new Categoria(nome, tamanho, embalagem);
+        dao.apagar(categoria);
         
         // Removendo a linha
         for (int i = selectedRows.length - 1; i >= 0; i--) {
