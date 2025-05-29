@@ -3,6 +3,7 @@ package visao;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 //gabriel
@@ -118,8 +119,12 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void JBCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroProdutoActionPerformed
         // TODO add your handling code here:
-        FrmCadastroProduto objeto = new FrmCadastroProduto();
-        objeto.setVisible(true);
+        try {
+        new FrmCadastroProduto().setVisible(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao abrir Form:" + e.getMessage());
+        }
     }//GEN-LAST:event_JBCadastroProdutoActionPerformed
 
     private void JBRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRelatorioActionPerformed

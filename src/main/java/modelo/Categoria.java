@@ -56,7 +56,7 @@ public class Categoria {
     
     @Override
     public String toString(){
-     return nome;
+     return this.nome;
     }
 
     
