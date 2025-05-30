@@ -32,7 +32,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         try {
             // Conexão direta com o banco
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/controleestoquea3", "root", "unisul@prog3"
+                    "jdbc:mysql://127.0.0.1:3306/controleestoquea3", "a3prog", "unisul@prog3"
             );
 
             String sql = "SELECT * FROM categoria";
