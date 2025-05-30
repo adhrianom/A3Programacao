@@ -84,7 +84,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         JTFQuantidadeMaxima = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        JTFUnidade = new javax.swing.JTextField();
+        JCUnidade = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Produto");
@@ -154,6 +154,8 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
         jLabel8.setText("Unidade:");
 
+        JCUnidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kilogramas", "Gramas", "Litros", "Mililitros" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,7 +179,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JTFUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JCUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
@@ -195,7 +197,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(JTFQuantidade)
+                        .addComponent(JTFQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                         .addGap(31, 31, 31)
                         .addComponent(jLabel5)
                         .addGap(208, 208, 208)))
@@ -222,7 +224,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(JTFQuantidadeMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(JTFUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JCUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBFechar)
@@ -261,7 +263,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String nome = JTFNome.getText();
-            String unidade = JTFUnidade.getText();
+            String unidade = JCUnidade.getSelectedItem().toString();
             double preco = Double.parseDouble(JTFPreco.getText());
             int quantidade = Integer.parseInt(JTFQuantidade.getText());
             int quantidadeMinima = Integer.parseInt(JTFQuantidadeMinima.getText());
@@ -331,12 +333,12 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JButton JBAdicionar;
     private javax.swing.JButton JBFechar;
     private javax.swing.JButton JBRemover;
+    private javax.swing.JComboBox<String> JCUnidade;
     private javax.swing.JTextField JTFNome;
     private javax.swing.JTextField JTFPreco;
     private javax.swing.JTextField JTFQuantidade;
     private javax.swing.JTextField JTFQuantidadeMaxima;
     private javax.swing.JTextField JTFQuantidadeMinima;
-    private javax.swing.JTextField JTFUnidade;
     private javax.swing.JTable JTProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

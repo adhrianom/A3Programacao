@@ -44,7 +44,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" pref="59" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="JTFUnidade" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="JCUnidade" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="JTFQuantidade" max="32767" attributes="0"/>
+                      <Component id="JTFQuantidade" pref="81" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JTFQuantidadeMaxima" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JTFUnidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JCUnidade" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -227,7 +227,20 @@
         <Property name="text" type="java.lang.String" value="Unidade:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFUnidade">
+    <Component class="javax.swing.JComboBox" name="JCUnidade">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Kilogramas"/>
+            <StringItem index="1" value="Gramas"/>
+            <StringItem index="2" value="Litros"/>
+            <StringItem index="3" value="Mililitros"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
