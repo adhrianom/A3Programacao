@@ -4,7 +4,7 @@ import java.sql.*;
 public class ConnectionFactory {
 
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/controleestoquea3";
-    private static final String USUARIO = "root";
+    private static final String USUARIO = "a3prog";
     private static final String SENHA = "unisul@prog3";
 
     public static Connection getConnection() throws SQLException {
