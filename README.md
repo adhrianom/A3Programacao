@@ -50,7 +50,8 @@ Sistema desenvolvido para gerenciar o estoque de uma empresa, permitindo cadastr
 
 ## 🗄 Configuração do Banco de Dados
 
-Usuário = a3prog
+Usuário = a3prog 
+
 Senha = unisul@prog3
 
 ---
