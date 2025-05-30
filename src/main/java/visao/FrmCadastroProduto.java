@@ -117,7 +117,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Quantidade", "Preço", "Categoria", "Qntd. Minima", "Qntd. Maxima"
+                "ID", "Nome", "Quantidade", "Unidade", "Preço", "Categoria", "Qntd. Mínima", "Qntd. Máxima"
             }
         ));
         jScrollPane1.setViewportView(JTProduto);
