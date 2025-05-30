@@ -226,8 +226,11 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             }
             
             categoria = new Categoria(nome, tamanho, embalagem);
+            try {
             dao.inserir(categoria);
-            
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro ao adicionar categoria." + e.getMessage());
+            }
             int id = categoria.getIdCategoria();
             
             // Adicionando as informações na table

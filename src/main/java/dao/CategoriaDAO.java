@@ -13,23 +13,22 @@ public class CategoriaDAO {
         this.con = new ConnectionFactory().getConnection();
     }
 
-    public void inserir(Categoria categoria) {
+    public void inserir(Categoria categoria) throws SQLException {
         String sql = "INSERT INTO categoria(nome,tamanho,embalagem) VALUES (?,?,?)";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql)) {
-
+        try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, categoria.getNome());
             stmt.setString(2, categoria.getTamanho());
             stmt.setString(3, categoria.getEmbalagem());
-            stmt.execute();
-            stmt.close();
+            stmt.executeUpdate();
 
             // Recuperar o ID gerado
-            ResultSet rs = stmt.getGeneratedKeys();
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
             if (rs.next()) {
                 int idGerado = rs.getInt(1);
                 categoria.setIdCategoria(idGerado);
                 System.out.println("ID gerado: " + idGerado);
+            }
             }
 
         } catch (SQLException e) {
