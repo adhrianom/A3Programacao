@@ -56,10 +56,16 @@ Senha = unisul@prog3
 
 ---
 
-<strong>Desenvolvedores do Projeto</strong>
+## 👨‍💻 Desenvolvedores do Projeto
 
-<br> Adhriano Machado de Oliveira - 10725114655 (git: adhrianom) </br>
-<br>Ahron Stoco Simões - 10724261491 (git: ahronstoco) </br>
-<br>Eduardo Souza Jeremias - 10724262460 (git: eduardosjeremias) </br>
-<br>Gabriel Rodrigues Victurino - 10725113959 (git: gabriel-victurino) </br>
+| Nome                          | Matrícula      | GitHub                     |
+|-------------------------------|----------------|----------------------------|
+| Adhriano Machado de Oliveira | 10725114655    | [adhrianom](https://github.com/adhrianom) |
+| Ahron Stoco Simões           | 10724261491    | [ahronstoco](https://github.com/ahronstoco) |
+| Eduardo Souza Jeremias       | 10724262460    | [eduardosjeremias](https://github.com/eduardosjeremias) |
+| Gabriel Rodrigues Victurino  | 10725113959    | [gabriel-victurino](https://github.com/gabriel-victurino) |
+
+---
+
+Feito por estudantes da *Unisul* — 2025
 
