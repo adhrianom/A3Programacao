@@ -6,7 +6,6 @@ import dao.ProdutoDAO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
-import modelo.Tamanho;
 import modelo.SistemaEstoque;
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
@@ -44,7 +43,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 Categoria cat = new Categoria();
                 cat.setIdCategoria(rs.getInt("idCategoria"));
                 cat.setNome(rs.getString("nome"));
-                cat.setTamanho(Tamanho.valueOf(rs.getString("tamanho")));
+                cat.setTamanho(rs.getString("tamanho"));
                 cat.setEmbalagem(rs.getString("embalagem"));
                 JCCategoria.addItem(cat);
             }

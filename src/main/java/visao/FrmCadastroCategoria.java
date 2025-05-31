@@ -7,14 +7,13 @@ import dao.CategoriaDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Categoria;
-import modelo.Tamanho;
 
 public class FrmCadastroCategoria extends javax.swing.JFrame {
 
     public FrmCadastroCategoria() throws SQLException {
         initComponents();
         this.categoria = new Categoria();
-        carregarCategorias();
+        this.dao = new CategoriaDAO();
     }
 
     Categoria categoria = new Categoria();
@@ -65,7 +64,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText(" ");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Adicionar Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 15))); // NOI18N
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         jLabel2.setText("Nome:");
@@ -96,7 +95,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jLabel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Lista de Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         JTCategoria.setAutoCreateRowSorter(true);
         JTCategoria.setModel(new javax.swing.table.DefaultTableModel(
@@ -109,7 +108,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(JTCategoria);
 
-        JCTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Medio", "Grande" }));
+        JCTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeno", "Médio", "Grande" }));
         JCTamanho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCTamanhoActionPerformed(evt);
@@ -204,7 +203,8 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         try {
             String nome = "";
             String embalagem = "";
-            Tamanho tamanho = null;
+            String tamanho = "";
+            
 
             // Interceptando possíveis problemas
             if (this.JTFNome.getText().length() < 3) {
@@ -222,20 +222,21 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             if (selected == null) {
                 throw new Mensagem("Selecione um tamanho.");
             } else {
-                tamanho = Tamanho.valueOf(selected.toString());
+                tamanho = selected.toString();
             }
+            
             categoria = new Categoria(nome, tamanho, embalagem);
             try {
-                dao.inserir(categoria);
+            dao.inserir(categoria);
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Ocorreu um erro ao adicionar categoria." + e.getMessage());
             }
             int id = categoria.getIdCategoria();
-
+            
             // Adicionando as informações na table
             DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
             model.addRow(new Object[]{id, nome, tamanho, embalagem});
-
+            
             // Setando os valores iniciais.
             JTFNome.setText("");
             JTFEmbalagem.setText("");
@@ -251,7 +252,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
         // Selecionando as rows(linhas) da JTable;
-
+           
         int selectedRow = JTCategoria.getSelectedRow();
 
         // Caso o usuário não escolha uma linha para deletar.
@@ -262,31 +263,14 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
         int idCategoria = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
-
+        
         dao.apagar(idCategoria);
-
+        
         // Removendo a linha
         model.removeRow(selectedRow);
-
+        
         JOptionPane.showMessageDialog(null, "Categoria apagada.");
     }//GEN-LAST:event_JBRemoverActionPerformed
-    private void carregarCategorias() {
-        try {
-            DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
-            model.setRowCount(0);
-
-            for (Categoria cat : dao.listar()) {
-                model.addRow(new Object[]{
-                    cat.getIdCategoria(),
-                    cat.getNome(),
-                    cat.getTamanho(),
-                    cat.getEmbalagem()
-                });
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao carregar categorias: " + e.getMessage());
-        }
-    }
 
     /**
      * @param args the command line arguments
