@@ -2,21 +2,21 @@ package modelo;
 
 public class Categoria {
     private String nome; // Nome da categoria.
-    private String tamanho; // Pequeno, Medio e Grande;
+    private Tamanho tamanho; // Pequeno, Medio e Grande;
     private String embalagem; // Lata, Vidro e Plastico;
     private int idCategoria;
 
     public Categoria() {
     }
 
-    public Categoria(String nome, String tamanho, String embalagem, int idCategoria) {
+    public Categoria(String nome, Tamanho tamanho, String embalagem, int idCategoria) {
         this.nome = nome;
         this.tamanho = tamanho;
         this.embalagem = embalagem;
         this.idCategoria = idCategoria;
     }
 
-    public Categoria(String nome, String tamanho, String embalagem) {
+    public Categoria(String nome, Tamanho tamanho, String embalagem) {
         this.nome = nome;
         this.tamanho = tamanho;
         this.embalagem = embalagem;
@@ -30,11 +30,11 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public String getTamanho() {
+    public Tamanho getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(String tamanho) {
+    public void setTamanho(Tamanho tamanho) {
         this.tamanho = tamanho;
     }
 
