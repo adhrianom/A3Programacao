@@ -50,7 +50,7 @@ public class ProdutoDAO {
             stmt.setInt(5, se.getQuantidadeMinima());
             stmt.setInt(6, se.getQuantidadeMaxima());
             stmt.setString(7, produto.getCategoria().getNome());
-            stmt.setString(8, produto.getCategoria().getTamanho());
+            stmt.setString(8, produto.getCategoria().getTamanho().name());
             stmt.setString(9, produto.getCategoria().getEmbalagem());
             stmt.setInt(10, se.getId());
             stmt.executeUpdate();
