@@ -42,9 +42,9 @@ Sistema desenvolvido para gerenciar o estoque de uma empresa, permitindo cadastr
 
 - Java 21  
 - Apache NetBeans IDE 25  
-- MySQL  
-- JDBC  
-- Maven  
+- MySQL 8.0
+- JDBC 8.0.33
+- Maven 3.9.9 
 
 ---
 
