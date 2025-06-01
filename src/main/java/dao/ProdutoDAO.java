@@ -21,7 +21,7 @@ public class ProdutoDAO {
         String sql = "INSERT INTO produto (Nome, PrecoUnitario, Unidade, QuantidadeEstoque, QuantidadeMinima, "
                 + "QuantidadeMaxima, Categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setString(1, produto.getNome());
             stmt.setDouble(2, produto.getPrecoUnitario());
@@ -39,9 +39,9 @@ public class ProdutoDAO {
 
     public void alterar(Produto produto) {
         String sql = "UPDATE produto SET Nome = ?, Preço Unitário = ?, Unidade = ?, Quantidade de Estoque = ?, Quantidade Mínima = ?, "
-                + "Quantidade Máxima = ? Id = ?, Categoria = ? WHERE id = ?";
+                + "Quantidade Máxima = ? IdProduto = ?, Categoria = ? WHERE idProduto = ?";
 
-        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setString(1, produto.getNome());
             stmt.setDouble(2, produto.getPrecoUnitario());
@@ -52,7 +52,7 @@ public class ProdutoDAO {
             stmt.setString(7, produto.getCategoria().getNome());
             stmt.setString(8, produto.getCategoria().getTamanho().name());
             stmt.setString(9, produto.getCategoria().getEmbalagem());
-            stmt.setInt(10, se.getId());
+            stmt.setInt(10, se.getIdProduto());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -60,12 +60,12 @@ public class ProdutoDAO {
         }
     }
 
-    public void apagar(int id) {
-        String sql = "DELETE FROM produto WHERE id = ?";
+    public void apagar(int idProduto) {
+        String sql = "DELETE FROM produto WHERE idProduto = ?";
 
-        try (Connection conn = ConnectionFactory.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
+            stmt.setInt(1, idProduto);
             stmt.executeUpdate();
 
         } catch (SQLException e) {

@@ -2,7 +2,7 @@ package modelo;
 import java.util.Date;
 
 public class SistemaEstoque extends itemEstoque {
-    private int id;
+    private int idProduto;
     private String operacao; // Entrada ou saida
     private int quantidadeEstoque;
     private int quantidadeMinima;
@@ -13,8 +13,8 @@ public class SistemaEstoque extends itemEstoque {
     public SistemaEstoque() {
     }
 
-    public SistemaEstoque(int id, String operacao, int quantidadeEstoque, int quantidadeMinima, int quantidadeMaxima, Date data) {
-        this.id = id;
+    public SistemaEstoque(int idProduto, String operacao, int quantidadeEstoque, int quantidadeMinima, int quantidadeMaxima, Date data) {
+        this.idProduto = idProduto;
         this.operacao = operacao;
         this.quantidadeEstoque = quantidadeEstoque;
         this.quantidadeMinima = quantidadeMinima;
@@ -22,12 +22,12 @@ public class SistemaEstoque extends itemEstoque {
         this.data = data;
     }
 
-    public int getId() {
-        return id;
+    public int getIdProduto() {
+        return idProduto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public String getOperacao() {
