@@ -6,35 +6,24 @@ Sistema desenvolvido para gerenciar o estoque de uma empresa, permitindo cadastr
 
 ---
 
-## 🚀 Funcionalidades
-
-- Cadastro de produtos com atributos como nome, preço, unidade, categoria, estoque mínimo e máximo  
-- Cadastro de categorias com tipo de embalagem e tamanho  
-- Controle de entrada e saída de produtos  
-- Validação de limites de estoque (mínimo/máximo)  
-- Geração de relatórios com filtros diversos  
-- Interface gráfica amigável  
-
----
-
 ## ✅ Requisitos Funcionais
 
-1. O sistema deve permitir o cadastro de produtos com seus respectivos atributos.  
-2. O sistema deve permitir o cadastro de categorias com embalagem e tamanho.  
-3. O sistema deve controlar a entrada e a saída de produtos no estoque.  
-4. O sistema deve emitir alertas quando o estoque estiver abaixo do mínimo ou acima do máximo.  
-5. O sistema deve gerar relatórios de produtos com filtros por categoria, quantidade e estoque.  
-6. O sistema deve validar todos os campos obrigatórios no momento do cadastro.
+RF01 - O sistema deve permitir o cadastro de produtos com os atributos nome, preço, unidade, categoria, estoque mínimo e máximo.  
+RF02 - O sistema deve permitir o cadastro de categorias com nome, embalagem e tamanho.  
+RF03 - O sistema deve controlar a entrada e a saída de produtos no estoque.  
+RF04 - O sistema deve emitir alertas quando o estoque estiver abaixo do mínimo ou acima do máximo.  
+RF05 - O sistema deve gerar relatórios de produtos com filtros por categoria, quantidade e estoque.  
+RF06 - O sistema deve validar todos os campos obrigatórios no momento do cadastro.
 
 ---
 
 ## ⚙ Requisitos Não Funcionais
 
-1. O sistema deve ser desenvolvido em Java, utilizando a IDE NetBeans.  
-2. O sistema deve utilizar banco de dados MySQL para armazenar os dados.  
-3. A interface gráfica deve ser implementada com Swing.  
-4. O sistema deve ser executado em ambiente desktop (local).  
-5. O código-fonte deve ser organizado em camadas (modelo, DAO, view, controller).
+RNF01 - O sistema deve ser desenvolvido em Java, utilizando a IDE NetBeans.  
+RNF02 - O sistema deve utilizar banco de dados MySQL para armazenar os dados.  
+RNF03 - A interface gráfica deve ser implementada com Swing.  
+RNF04 - O sistema deve ser executado em ambiente desktop (local).  
+RNF05 - O código-fonte deve ser organizado em camadas (modelo, DAO, view, controller).
 
 ---
 
