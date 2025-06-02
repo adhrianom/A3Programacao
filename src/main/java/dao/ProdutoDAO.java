@@ -19,8 +19,8 @@ public class ProdutoDAO {
     }
 
     public void inserir(Produto produto) {
-        String sql = "INSERT INTO produto (Nome, PrecoUnitario, Unidade, QuantidadeEstoque, QuantidadeMinima, "
-                + "QuantidadeMaxima, Categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produto (nome, precoUnitario, unidade, quantidadeEstoque, quantidadeMinima, "
+                + "quantidadeMaxima, categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
@@ -39,8 +39,8 @@ public class ProdutoDAO {
     }
 
     public void alterar(Produto produto) {
-        String sql = "UPDATE produto SET Nome = ?, PrecoUnitario = ?, Unidade = ?, QuantidadeEstoque = ?, QuantidadeMinima = ?, "
-                + "QuantidadeMaxima = ? IdProduto = ?, Categoria = ? WHERE idProduto = ?";
+        String sql = "UPDATE produto SET nome = ?, precoUnitario = ?, unidade = ?, quantidadeEstoque = ?, quantidadeMinima = ?, "
+                + "quantidadeMaxima = ? idProduto = ?, categoria = ? WHERE idProduto = ?";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
