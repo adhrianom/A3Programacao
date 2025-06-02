@@ -4,16 +4,13 @@ import java.util.Date;
 public class GerenciamentoEstoque extends itemEstoque {
     private int idProduto;
     private String operacao; // Entrada ou saida
-    private int quantidadeEstoque;
-    private int quantidadeMinima;
-    private int quantidadeMaxima;
     private Date data;
     
 // Mudança conforme solicitado
     public GerenciamentoEstoque() {
     }
 
-    public GerenciamentoEstoque(int idProduto, String operacao, int quantidadeEstoque, int quantidadeMinima, int quantidadeMaxima, Date data) {
+    public GerenciamentoEstoque(int idProduto, String operacao, Date data) {
         this.idProduto = idProduto;
         this.operacao = operacao;
         this.data = data;
