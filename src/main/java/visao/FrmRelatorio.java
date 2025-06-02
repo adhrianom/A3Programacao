@@ -1,7 +1,6 @@
 package visao;
 
 public class FrmRelatorio extends javax.swing.JFrame {
-//gabriel
     /**
      * Creates new form FrmRelatorio
      */

@@ -6,10 +6,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FrmMenuPrincipal extends javax.swing.JFrame {
-//gabriel
-    /**
-     * Creates new form FrmMenuPrincipal
-     */
+
     public FrmMenuPrincipal() {
         initComponents();
     }
