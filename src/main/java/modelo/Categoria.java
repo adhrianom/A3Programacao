@@ -1,6 +1,7 @@
 package modelo;
 
 public class Categoria {
+
     private String nome; // Nome da categoria.
     private Tamanho tamanho; // Pequeno, Medio e Grande;
     private String embalagem; // Lata, Vidro e Plastico;
@@ -30,6 +31,10 @@ public class Categoria {
         this.nome = nome;
     }
 
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
+
     public Tamanho getTamanho() {
         return tamanho;
     }
@@ -53,18 +58,10 @@ public class Categoria {
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
-    
+
     @Override
-    public String toString(){
-     return this.nome;
+    public String toString() {
+        return this.nome;
     }
 
-    
-
-   
-    
-    
-    
-            
-    
 }

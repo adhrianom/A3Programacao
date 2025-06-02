@@ -2,6 +2,7 @@ package visao;
 
 import java.sql.*;
 import modelo.Produto;
+import javax.swing.table.DefaultTableModel;
 import dao.ProdutoDAO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -21,6 +22,9 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
     public FrmCadastroProduto() throws SQLException {
         initComponents();
+        this.produto = new Produto();
+        dao = new ProdutoDAO();
+        carregarProdutos();
         JCCategoria = new JComboBox<>();
         JCCategoria.setBounds(600, 57, 150, 20); // ajuste as coordenadas
         getContentPane().add(JCCategoria);
@@ -250,6 +254,23 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
         // TODO add your handling code here:
+        int selectedRow = JTProduto.getSelectedRow();
+
+        // Caso o usuário não escolha uma linha para deletar.
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um linha para apagar.");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) JTProduto.getModel();
+        int idProduto = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+
+        dao.apagar(idProduto);
+
+        // Removendo a linha
+        model.removeRow(selectedRow);
+
+        JOptionPane.showMessageDialog(null, "Produto apagado.");
     }//GEN-LAST:event_JBRemoverActionPerformed
 
     private void JTFQuantidadeMinimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFQuantidadeMinimaActionPerformed
@@ -266,18 +287,22 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             String nome = JTFNome.getText();
             String unidade = JCUnidade.getSelectedItem().toString();
             double preco = Double.parseDouble(JTFPreco.getText());
-            int quantidade = Integer.parseInt(JTFQuantidade.getText());
+            int quantidadeEstoque = Integer.parseInt(JTFQuantidade.getText());
             int quantidadeMinima = Integer.parseInt(JTFQuantidadeMinima.getText());
             int quantidadeMaxima = Integer.parseInt(JTFQuantidadeMaxima.getText());
             Categoria categoria = (Categoria) JCCategoria.getSelectedItem();
 
             Produto produto = new Produto();
             produto.setNome(nome);
+            produto.setQuantidadeEstoque(quantidadeEstoque);
+            produto.setQuantidadeMinima(quantidadeMinima);
+            produto.setQuantidadeMaxima(quantidadeMaxima);
             produto.setUnidade(unidade);
             produto.setPrecoUnitario(preco);
             produto.setCategoria(categoria);
-
+            
             dao.inserir(produto);
+            carregarProdutos();
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
             JTFNome.setText("");
             JTFPreco.setText("");
@@ -289,6 +314,27 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao adicionar produto.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_JBAdicionarActionPerformed
+    private void carregarProdutos() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) JTProduto.getModel();
+            model.setRowCount(0); // Limpa a tabela antes de recarregar os dados
+
+            for (Produto p : dao.listar()) {
+                model.addRow(new Object[]{
+                    p.getIdProduto(),
+                    p.getNome(),
+                    p.getQuantidadeEstoque(),
+                    p.getUnidade(),
+                    p.getPrecoUnitario(),
+                    p.getCategoria(),
+                    p.getQuantidadeMinima(),
+                    p.getQuantidadeMaxima()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar categorias: " + e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments

@@ -206,13 +206,13 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             String embalagem = "";
             Tamanho tamanho = null;
 
-            if (this.JTFNome.getText().length() < 3) {
-                throw new Mensagem("O nome da categoria deve conter mais de 3 caractéres.");
+            if (this.JTFNome.getText().length() < 2) {
+                throw new Mensagem("O nome da categoria deve conter mais de 2 caractéres.");
             } else {
                 nome = JTFNome.getText();
             }
-            if (this.JTFEmbalagem.getText().length() < 3) {
-                throw new Mensagem("A embalagem deve conter mais de 3 caractéres.");
+            if (this.JTFEmbalagem.getText().length() < 2) {
+                throw new Mensagem("A embalagem deve conter mais de 2 caractéres.");
             } else {
                 embalagem = JTFEmbalagem.getText();
             }
@@ -271,22 +271,22 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Categoria apagada.");
     }//GEN-LAST:event_JBRemoverActionPerformed
     private void carregarCategorias() {
-    try {
-        DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
-        model.setRowCount(0); // Limpa a tabela antes de recarregar os dados
+        try {
+            DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();
+            model.setRowCount(0); // Limpa a tabela antes de recarregar os dados
 
-        for (Categoria cat : dao.listar()) {
-            model.addRow(new Object[]{
-                cat.getIdCategoria(),
-                cat.getNome(),
-                cat.getTamanho(),
-                cat.getEmbalagem()
-            });
+            for (Categoria cat : dao.listar()) {
+                model.addRow(new Object[]{
+                    cat.getIdCategoria(),
+                    cat.getNome(),
+                    cat.getTamanho(),
+                    cat.getEmbalagem()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar categorias: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao carregar categorias: " + e.getMessage());
     }
-}
 
     /**
      * @param args the command line arguments
