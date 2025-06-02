@@ -10,9 +10,8 @@ import java.util.List;
 public class ProdutoDAO {
 
     private Connection conexao;
-    
-    GerenciamentoEstoque se = new GerenciamentoEstoque();
 
+    GerenciamentoEstoque se = new GerenciamentoEstoque();
 
     public ProdutoDAO() throws SQLException {
         this.conexao = new ConnectionFactory().getConnection();
@@ -73,6 +72,7 @@ public class ProdutoDAO {
             System.err.println("Erro ao remover produto " + e.getMessage());
         }
     }
+
     public List<Produto> listar() {
         List<Produto> lista = new ArrayList<>();
         String sql = "SELECT * FROM produto";
@@ -96,6 +96,62 @@ public class ProdutoDAO {
 
         } catch (SQLException e) {
             System.err.println("Erro ao listar os Produtos: " + e.getMessage());
+        }
+
+        return lista;
+    }
+
+    public Produto buscarPorId(int idProduto) {
+        String sql = "SELECT * FROM produto WHERE idProduto = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setInt(1, idProduto);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Produto p = new Produto();
+                p.setIdProduto(rs.getInt("idProduto"));
+                p.setNome(rs.getString("nome"));
+                p.setPrecoUnitario(rs.getDouble("precoUnitario"));
+                p.setUnidade(rs.getString("unidade"));
+                p.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                p.setQuantidadeMinima(rs.getInt("quantidadeMinima"));
+                p.setQuantidadeMaxima(rs.getInt("quantidadeMaxima"));
+                Categoria c = new Categoria();
+                c.setNome(rs.getString("categoria"));
+                p.setCategoria(c);
+                return p;
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar produto por ID: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public List<Produto> buscarPorNome(String nome) {
+        List<Produto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM produto WHERE nome LIKE ?";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Produto p = new Produto();
+                p.setIdProduto(rs.getInt("idProduto"));
+                p.setNome(rs.getString("nome"));
+                p.setPrecoUnitario(rs.getDouble("precoUnitario"));
+                p.setUnidade(rs.getString("unidade"));
+                p.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                p.setQuantidadeMinima(rs.getInt("quantidadeMinima"));
+                p.setQuantidadeMaxima(rs.getInt("quantidadeMaxima"));
+                Categoria c = new Categoria();
+                c.setNome(rs.getString("categoria"));
+                p.setCategoria(c);
+                lista.add(p);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar produtos por nome: " + e.getMessage());
         }
 
         return lista;
