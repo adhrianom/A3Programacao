@@ -9,7 +9,7 @@ public class GerenciamentoEstoque extends itemEstoque {
     private int quantidadeMaxima;
     private Date data;
     
-
+// Mudança conforme solicitado
     public GerenciamentoEstoque() {
     }
 

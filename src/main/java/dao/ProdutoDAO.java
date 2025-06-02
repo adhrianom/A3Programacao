@@ -3,7 +3,7 @@ package dao;
 import java.sql.*;
 import modelo.Produto;
 import modelo.Categoria;
-import modelo.SistemaEstoque;
+import modelo.GerenciamentoEstoque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class ProdutoDAO {
 
     private Connection conexao;
     
-    SistemaEstoque se = new SistemaEstoque();
+    GerenciamentoEstoque se = new GerenciamentoEstoque();
 
 
     public ProdutoDAO() throws SQLException {

@@ -8,7 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Tamanho;
-import modelo.SistemaEstoque;
+import modelo.GerenciamentoEstoque;
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
 
