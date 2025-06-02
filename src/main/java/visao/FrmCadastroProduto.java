@@ -11,7 +11,6 @@ import modelo.Tamanho;
 import modelo.SistemaEstoque;
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
-//gabriel
 
     /**
      * Creates new form FrmCadastroProduto
