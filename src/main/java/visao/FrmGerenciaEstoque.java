@@ -21,15 +21,22 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
 
         JBFechar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTEstoque = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         JTFQuantidade = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         JCOperacao = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        JTFDesconto = new javax.swing.JTextField();
-        JBAlterar = new javax.swing.JButton();
-        JBAtualizar = new javax.swing.JButton();
+        JBAlterarQuantidade = new javax.swing.JButton();
+        JBAplicarAumento = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        JTFAumentoPreco = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        JTFReducaoPreco = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        JTFPesquisar = new javax.swing.JTextField();
+        JBPesquisar = new javax.swing.JButton();
+        JBAplicarReducao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Estoque");
@@ -41,7 +48,7 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -52,9 +59,9 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
                 "ID", "Nome", "Quantidade", "Unidade", "Preço", "Categoria", "Qntd. Mínima", "Qntd. Máxima"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JTEstoque);
 
-        jLabel1.setText("Quantidade ");
+        jLabel1.setText("Quantidade: ");
 
         JTFQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +69,7 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Operação");
+        jLabel2.setText("Operação:");
 
         JCOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saída" }));
         JCOperacao.addActionListener(new java.awt.event.ActionListener() {
@@ -71,14 +78,46 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Desconto");
+        jLabel3.setText("Aumento Percentual:");
 
-        JBAlterar.setText("Alterar");
+        JBAlterarQuantidade.setText("Alterar Quantidade");
 
-        JBAtualizar.setText("Atualizar");
-        JBAtualizar.addActionListener(new java.awt.event.ActionListener() {
+        JBAplicarAumento.setText("Aplicar Aumento de Preço");
+        JBAplicarAumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBAtualizarActionPerformed(evt);
+                JBAplicarAumentoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerência de Estoque", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 15))); // NOI18N
+
+        JTFAumentoPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFAumentoPrecoActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Redução Percentual:");
+
+        JTFReducaoPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFReducaoPrecoActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Encontrar Produto:");
+
+        JBPesquisar.setText("Pesquisar");
+        JBPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBPesquisarActionPerformed(evt);
+            }
+        });
+
+        JBAplicarReducao.setText("Aplicar Redução de Preço");
+        JBAplicarReducao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAplicarReducaoActionPerformed(evt);
             }
         });
 
@@ -89,54 +128,82 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel1))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JCOperacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(JTFQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(195, 195, 195)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JTFQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JBAlterarQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(JCOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JTFDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTFAumentoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JBAplicarAumento, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(JBFechar))))))
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(JTFReducaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JBAplicarReducao, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JTFPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(JBPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JBFechar)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(JBAlterar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JBAtualizar)
-                .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(41, 41, 41)
+                    .addComponent(jLabel6)
+                    .addComponent(JTFPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBPesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(JCOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFReducaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTFQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JTFAumentoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTFQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTFDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JCOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBAlterar)
-                    .addComponent(JBAtualizar))
-                .addGap(59, 59, 59)
+                    .addComponent(JBAlterarQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBAplicarReducao, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBAplicarAumento, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(JBFechar)
                 .addContainerGap())
         );
@@ -149,9 +216,9 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBFecharActionPerformed
 
-    private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
+    private void JBAplicarAumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarAumentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JBAtualizarActionPerformed
+    }//GEN-LAST:event_JBAplicarAumentoActionPerformed
 
     private void JTFQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFQuantidadeActionPerformed
         // TODO add your handling code here:
@@ -160,6 +227,22 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
     private void JCOperacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCOperacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JCOperacaoActionPerformed
+
+    private void JTFAumentoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFAumentoPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFAumentoPrecoActionPerformed
+
+    private void JTFReducaoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFReducaoPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFReducaoPrecoActionPerformed
+
+    private void JBPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBPesquisarActionPerformed
+
+    private void JBAplicarReducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarReducaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBAplicarReducaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,16 +280,23 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JBAlterar;
-    private javax.swing.JButton JBAtualizar;
+    private javax.swing.JButton JBAlterarQuantidade;
+    private javax.swing.JButton JBAplicarAumento;
+    private javax.swing.JButton JBAplicarReducao;
     private javax.swing.JButton JBFechar;
+    private javax.swing.JButton JBPesquisar;
     private javax.swing.JComboBox<String> JCOperacao;
-    private javax.swing.JTextField JTFDesconto;
+    private javax.swing.JTable JTEstoque;
+    private javax.swing.JTextField JTFAumentoPreco;
+    private javax.swing.JTextField JTFPesquisar;
     private javax.swing.JTextField JTFQuantidade;
+    private javax.swing.JTextField JTFReducaoPreco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
