@@ -117,7 +117,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void JBCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroProdutoActionPerformed
         // TODO add your handling code here:
         try {
-        new FrmCadastroProduto().setVisible(true);
+            new FrmCadastroProduto().setVisible(true);
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Erro ao abrir Form:" + e.getMessage());
@@ -137,8 +137,13 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void JBGerenciaEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciaEstoqueActionPerformed
         // TODO add your handling code here:
-        FrmGerenciaEstoque objeto = new FrmGerenciaEstoque();
-        objeto.setVisible(true);
+        try {
+            FrmGerenciaEstoque objeto = new FrmGerenciaEstoque();
+            objeto.setVisible(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao abrir Form:" + e.getMessage());
+        }
     }//GEN-LAST:event_JBGerenciaEstoqueActionPerformed
 
     /**

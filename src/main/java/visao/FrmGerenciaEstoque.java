@@ -1,13 +1,24 @@
 package visao;
 
+import javax.swing.JOptionPane;
+import modelo.Produto;
+import dao.ProdutoDAO;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import modelo.Produto;
 
 public class FrmGerenciaEstoque extends javax.swing.JFrame {
 //gabriel
+
     /**
      * Creates new form FrmGerenciaEstoque
      */
-    public FrmGerenciaEstoque() {
+    private ProdutoDAO dao;
+
+    public FrmGerenciaEstoque() throws SQLException {
         initComponents();
+        dao = new ProdutoDAO();
+        carregarProdutos();
     }
 
     /**
@@ -243,6 +254,27 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
     private void JBAplicarReducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarReducaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JBAplicarReducaoActionPerformed
+    private void carregarProdutos() {
+        try {
+            DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();
+            model.setRowCount(0); // Limpa a tabela antes de recarregar os dados
+
+            for (Produto p : dao.listar()) {
+                model.addRow(new Object[]{
+                    p.getIdProduto(),
+                    p.getNome(),
+                    p.getQuantidadeEstoque(),
+                    p.getUnidade(),
+                    p.getPrecoUnitario(),
+                    p.getCategoria(),
+                    p.getQuantidadeMinima(),
+                    p.getQuantidadeMaxima()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar categorias: " + e.getMessage());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -274,7 +306,12 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmGerenciaEstoque().setVisible(true);
+                try {
+                    new FrmGerenciaEstoque().setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Erro ao abrir Form" + e.getMessage());
+                }
             }
         });
     }
