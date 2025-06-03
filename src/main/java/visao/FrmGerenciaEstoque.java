@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import modelo.Produto;
 import dao.ProdutoDAO;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Produto;
 
@@ -271,6 +272,12 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
 
     private void JBPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPesquisarActionPerformed
         // TODO add your handling code here:
+        String texto = JTFPesquisar.getText().trim();
+        if (texto.matches("\\d+")) {
+            buscarPorId(Integer.parseInt(texto));
+        } else {
+            buscarPorNome(texto);
+        }
     }//GEN-LAST:event_JBPesquisarActionPerformed
 
     private void JBAplicarReducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarReducaoActionPerformed
@@ -345,6 +352,57 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar categorias: " + e.getMessage());
+        }
+    }
+
+    private void buscarPorId(int idProduto) {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto p = dao.buscarPorId(idProduto);
+            DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();
+            model.setRowCount(0);
+
+            if (p != null) {
+                model.addRow(new Object[]{
+                    p.getIdProduto(),
+                    p.getNome(),
+                    p.getQuantidadeEstoque(),
+                    p.getUnidade(),
+                    p.getPrecoUnitario(),
+                    p.getCategoria().getNome(),
+                    p.getQuantidadeMinima(),
+                    p.getQuantidadeMaxima()
+                });
+            } else {
+                JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar produto: " + e.getMessage());
+        }
+    }
+
+    private void buscarPorNome(String nome) {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> lista = dao.buscarPorNome(nome);
+            DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();
+            model.setRowCount(0);
+
+            for (Produto p : lista) {
+                model.addRow(new Object[]{
+                    p.getIdProduto(),
+                    p.getNome(),
+                    p.getQuantidadeEstoque(),
+                    p.getUnidade(),
+                    p.getPrecoUnitario(),
+                    p.getCategoria().getNome(),
+                    p.getQuantidadeMinima(),
+                    p.getQuantidadeMaxima()
+                });
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar produtos: " + e.getMessage());
         }
     }
 
