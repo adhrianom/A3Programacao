@@ -49,10 +49,10 @@ Senha = unisul@prog3
 
 | Nome                          | Matrícula      | GitHub                     |
 |-------------------------------|----------------|----------------------------|
-| Adhriano Machado de Oliveira | 10725114655    | [adhrianom](https://github.com/adhrianom) |
-| Ahron Stoco Simões           | 10724261491    | [ahronstoco](https://github.com/ahronstoco) |
+| Adhriano Machado de Oliveira | 10725114655    | [adhrianom](https://github.com/adhrianom), feeh, adhrianom, 10725114655 |
+| Ahron Stoco Simões           | 10724261491    | [ahronstoco](https://github.com/ahronstoco), Ahron |
 | Eduardo Souza Jeremias       | 10724262460    | [eduardosjeremias](https://github.com/eduardosjeremias) |
-| Gabriel Rodrigues Victurino  | 10725113959    | [gabriel-victurino](https://github.com/gabriel-victurino) |
+| Gabriel Rodrigues Victurino  | 10725113959    | [gabriel-victurino](https://github.com/gabriel-victurino), gabri |
 
 ---
 
