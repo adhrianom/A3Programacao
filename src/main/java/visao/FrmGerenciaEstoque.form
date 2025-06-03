@@ -97,7 +97,7 @@
                   <Component id="JBPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="154" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="203" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -124,7 +124,7 @@
                   <Component id="JBAplicarReducao" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="JBAplicarAumento" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="75" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="JBFechar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
