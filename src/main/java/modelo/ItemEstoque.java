@@ -8,8 +8,7 @@ public abstract class ItemEstoque {
     private double precoUnitario;
 
     public ItemEstoque() {
-        this.nome = "";
-        this.precoUnitario = 0.0;
+        this("",0.0);
     }
 
     public ItemEstoque(String nome, double precoUnitario) {

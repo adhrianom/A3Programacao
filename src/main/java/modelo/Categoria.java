@@ -8,10 +8,7 @@ public class Categoria {
     private int idCategoria;
 
     public Categoria() {
-        this.nome = "";
-        this.tamanho = Tamanho.Pequeno;
-        this.embalagem = "";
-        this.idCategoria = 0;
+        this("",Tamanho.Pequeno,"",0);
     }
 
     public Categoria(String nome, Tamanho tamanho, String embalagem, int idCategoria) {

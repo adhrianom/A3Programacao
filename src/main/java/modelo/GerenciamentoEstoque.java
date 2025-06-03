@@ -8,8 +8,7 @@ public class GerenciamentoEstoque extends ItemEstoque {
     
 // Mudança conforme solicitado
     public GerenciamentoEstoque() {
-        this.idProduto = 0;
-        this.operacao = "";
+        this(0,"",new Date());
     }
 
     public GerenciamentoEstoque(int idProduto, String operacao, Date data) {
