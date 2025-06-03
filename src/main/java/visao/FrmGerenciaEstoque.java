@@ -92,6 +92,11 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         jLabel3.setText("Aumento Percentual:");
 
         JBAlterarQuantidade.setText("Alterar Quantidade");
+        JBAlterarQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBAlterarQuantidadeActionPerformed(evt);
+            }
+        });
 
         JBAplicarAumento.setText("Aplicar Aumento de Preço");
         JBAplicarAumento.addActionListener(new java.awt.event.ActionListener() {
@@ -228,7 +233,24 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_JBFecharActionPerformed
 
     private void JBAplicarAumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarAumentoActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = JTEstoque.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um produto.");
+            return;
+        }
+
+        try {
+            int idProduto = Integer.parseInt(JTEstoque.getValueAt(selectedRow, 0).toString());
+            double percentual = Double.parseDouble(JTFAumentoPreco.getText()) / 100.0;
+
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.aplicarDesconto(idProduto, -percentual);
+            JOptionPane.showMessageDialog(this, "Preço aumentado com sucesso.");
+            carregarProdutos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao aplicar aumento: " + e.getMessage());
+        }
     }//GEN-LAST:event_JBAplicarAumentoActionPerformed
 
     private void JTFQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFQuantidadeActionPerformed
@@ -252,12 +274,62 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_JBPesquisarActionPerformed
 
     private void JBAplicarReducaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarReducaoActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = JTEstoque.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um produto.");
+            return;
+        }
+
+        try {
+            int idProduto = Integer.parseInt(JTEstoque.getValueAt(selectedRow, 0).toString());
+            double percentual = Double.parseDouble(JTFReducaoPreco.getText()) / 100.0;
+
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.aplicarDesconto(idProduto, percentual);
+            JOptionPane.showMessageDialog(this, "Desconto aplicado com sucesso.");
+            carregarProdutos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao aplicar desconto: " + e.getMessage());
+        }
     }//GEN-LAST:event_JBAplicarReducaoActionPerformed
+
+    private void JBAlterarQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarQuantidadeActionPerformed
+        int selectedRow = JTEstoque.getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um produto na tabela.");
+            return;
+        }
+
+        try {
+            int idProduto = Integer.parseInt(JTEstoque.getValueAt(selectedRow, 0).toString());
+            int quantidadeAtual = Integer.parseInt(JTEstoque.getValueAt(selectedRow, 2).toString());
+            int quantidade = Integer.parseInt(JTFQuantidade.getText());
+            String operacao = JCOperacao.getSelectedItem().toString();
+
+            ProdutoDAO dao = new ProdutoDAO();
+
+            int novaQuantidade = operacao.equals("Entrada")
+                    ? quantidadeAtual + quantidade
+                    : quantidadeAtual - quantidade;
+
+            if (novaQuantidade < 0) {
+                JOptionPane.showMessageDialog(this, "A quantidade final não pode ser negativa.");
+                return;
+            }
+
+            dao.atualizarEstoque(idProduto, novaQuantidade);
+            JOptionPane.showMessageDialog(this, "Estoque atualizado.");
+            carregarProdutos();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
+    }//GEN-LAST:event_JBAlterarQuantidadeActionPerformed
     private void carregarProdutos() {
         try {
             DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();
-            model.setRowCount(0); // Limpa a tabela antes de recarregar os dados
+            model.setRowCount(0);
 
             for (Produto p : dao.listar()) {
                 model.addRow(new Object[]{

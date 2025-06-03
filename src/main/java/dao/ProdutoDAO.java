@@ -156,4 +156,26 @@ public class ProdutoDAO {
 
         return lista;
     }
+
+    public void atualizarEstoque(int idProduto, int novaQuantidade) {
+        String sql = "UPDATE produto SET quantidadeEstoque = ? WHERE idProduto = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setInt(1, novaQuantidade);
+            stmt.setInt(2, idProduto);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar estoque: " + e.getMessage());
+        }
+    }
+
+    public void aplicarDesconto(int idProduto, double percentual) {
+        String sql = "UPDATE produto SET precoUnitario = precoUnitario * ? WHERE idProduto = ?";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setDouble(1, 1 - percentual);
+            stmt.setInt(2, idProduto);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro ao aplicar desconto: " + e.getMessage());
+        }
+    }
 }
