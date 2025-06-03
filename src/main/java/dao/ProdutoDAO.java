@@ -17,7 +17,8 @@ public class ProdutoDAO {
     GerenciamentoEstoque se = new GerenciamentoEstoque();
 
     public ProdutoDAO() throws SQLException {
-        this.conexao = new ConnectionFactory().getConnection();
+        ConnectionFactory factory = new ConnectionFactory();
+        this.conexao = factory.getConnection();
     }
 
     public void inserir(Produto produto) {

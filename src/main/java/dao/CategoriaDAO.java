@@ -15,7 +15,9 @@ public class CategoriaDAO {
     private Connection con;
 
     public CategoriaDAO() throws SQLException {
-        this.con = ConnectionFactory.getConnection();
+        ConnectionFactory factory = new ConnectionFactory();
+        this.con = factory.getConnection();
+
     }
 
     public void inserir(Categoria categoria) throws SQLException {
