@@ -18,7 +18,7 @@ public class Principal {
             // Torna a janela visível.
             objetotela.setVisible(true);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro na conexão." + JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro na conexão.");
             System.out.println("Erro: " + e.getMessage());
         }
     }

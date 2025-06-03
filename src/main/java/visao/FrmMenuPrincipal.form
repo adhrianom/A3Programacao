@@ -30,33 +30,33 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="JBSair" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="JBCadastroProduto" alignment="2" max="32767" attributes="0"/>
-                          <Component id="JBCadastroCategoria" alignment="0" max="32767" attributes="0"/>
-                          <Component id="JBRelatorio" max="32767" attributes="0"/>
-                          <Component id="JBGerenciaEstoque" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="JBCadastroProduto" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="JBCadastroCategoria" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="JBGerenciaEstoque" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="JBRelatorio" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-              <Component id="JBCadastroCategoria" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="JBCadastroCategoria" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="JBCadastroProduto" min="-2" max="-2" attributes="0"/>
+              <Component id="JBCadastroProduto" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="JBGerenciaEstoque" min="-2" max="-2" attributes="0"/>
+              <Component id="JBGerenciaEstoque" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="JBRelatorio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="179" max="32767" attributes="0"/>
+              <Component id="JBRelatorio" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
               <Component id="JBSair" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
