@@ -37,11 +37,17 @@ RNF05 - O código-fonte deve ser organizado em camadas (modelo, DAO, view, contr
 
 ---
 
-## 🗄 Configuração do Banco de Dados
+## 🗄️ Configuração do Banco de Dados
 
-Usuário = a3prog 
+Para executar o sistema corretamente, utilize as seguintes credenciais de acesso ao MySQL:
 
-Senha = unisul@prog3
+- **Usuário:** `a3prog`  
+- **Senha:** `unisul@prog3`
+
+Antes de iniciar o sistema, é necessário criar o banco de dados.  
+O script SQL para criação da base de dados e tabelas está disponível neste repositório:
+
+📄 [`ControleEstoqueA3.sql`](ControleEstoqueA3.sql)
 
 ---
 
