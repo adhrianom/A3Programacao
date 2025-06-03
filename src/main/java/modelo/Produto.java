@@ -1,9 +1,9 @@
 package modelo;
 
 import modelo.Categoria;
-import modelo.itemEstoque;
+import modelo.ItemEstoque;
 
-public class Produto extends itemEstoque {
+public class Produto extends ItemEstoque {
 
     private String unidade; // Kg, Litros, etc.
     private int idProduto; // id para diferenciar produtos.
@@ -13,6 +13,11 @@ public class Produto extends itemEstoque {
     private int quantidadeMaxima;
 
     public Produto() {
+        this.unidade = "";
+        this.idProduto = 0;
+        this.quantidadeEstoque = 0;
+        this.quantidadeMaxima = 0;
+        this.quantidadeMinima = 0;
     }
 
     // Construtor sem quantidadeEstoque, para ser iniciado com zero no estoque.
