@@ -2,7 +2,7 @@ package visao;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.sql.*;
+import java.sql.SQLException;
 import dao.CategoriaDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;

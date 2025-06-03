@@ -1,7 +1,6 @@
 package visao;
 
 import javax.swing.JOptionPane;
-import modelo.Produto;
 import dao.ProdutoDAO;
 import java.sql.SQLException;
 import java.util.List;

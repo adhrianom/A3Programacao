@@ -1,5 +1,4 @@
 package principal;
-import modelo.Categoria;
 import dao.ConnectionFactory;
 import visao.FrmMenuPrincipal;
 public class Principal {

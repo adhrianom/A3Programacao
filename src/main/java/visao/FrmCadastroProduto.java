@@ -1,14 +1,17 @@
 package visao;
 
-import java.sql.*;
+import java.sql.SQLException;
 import modelo.Produto;
 import javax.swing.table.DefaultTableModel;
 import dao.ProdutoDAO;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Tamanho;
-import modelo.GerenciamentoEstoque;
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
 
