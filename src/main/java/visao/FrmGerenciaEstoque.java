@@ -329,17 +329,20 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             dao.atualizarEstoque(idProduto, novaQuantidade);
             JOptionPane.showMessageDialog(this, "Estoque atualizado.");
             carregarProdutos();
+            
             Produto produto = dao.buscarPorId(idProduto);
             if (produto.getQuantidadeEstoque() < produto.getQuantidadeMinima()) {
                 JOptionPane.showMessageDialog(null,
-                        "Estoque abaixo da quantidade mínima!",
+                        "Estoque abaixo da quantidade mínima! \nQuantidade em estoque: " + produto.getQuantidadeEstoque()+ 
+                                ". \nQuantidade mínima: " +produto.getQuantidadeMinima()+".",
                         "ATENÇÃO:",
                         JOptionPane.WARNING_MESSAGE);
             }
 
             if (produto.getQuantidadeEstoque() > produto.getQuantidadeMaxima()) {
                 JOptionPane.showMessageDialog(null,
-                        "Estoque acima da quantidade máxima!",
+                        "Estoque acima da quantidade máxima! \nQuantidade em estoque: " +produto.getQuantidadeEstoque()+
+                                ". \nQuantidade máxima: " +produto.getQuantidadeMaxima()+".",
                         "ATENÇÃO:",
                         JOptionPane.WARNING_MESSAGE);
             }
