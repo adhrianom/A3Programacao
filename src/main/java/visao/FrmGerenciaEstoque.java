@@ -357,25 +357,26 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
     private void buscarPorId(int idProduto) {
         try {
             ProdutoDAO dao = new ProdutoDAO();
-            Produto p = dao.buscarPorId(idProduto);
+            Produto produto = dao.buscarPorId(idProduto);
+            
             DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();
             model.setRowCount(0);
 
-            if (p != null) {
+            if (produto != null) {
                 model.addRow(new Object[]{
-                    p.getIdProduto(),
-                    p.getNome(),
-                    p.getQuantidadeEstoque(),
-                    p.getUnidade(),
-                    p.getPrecoUnitario(),
-                    p.getCategoria().getNome(),
-                    p.getQuantidadeMinima(),
-                    p.getQuantidadeMaxima()
+                    produto.getIdProduto(),
+                    produto.getNome(),
+                    produto.getQuantidadeEstoque(),
+                    produto.getUnidade(),
+                    produto.getPrecoUnitario(),
+                    produto.getCategoria().getNome(),
+                    produto.getQuantidadeMinima(),
+                    produto.getQuantidadeMaxima()
                 });
             } else {
                 JOptionPane.showMessageDialog(this, "Produto não encontrado.");
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao buscar produto: " + e.getMessage());
         }
     }
@@ -387,20 +388,20 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();
             model.setRowCount(0);
 
-            for (Produto p : lista) {
+            for (Produto produto : lista) {
                 model.addRow(new Object[]{
-                    p.getIdProduto(),
-                    p.getNome(),
-                    p.getQuantidadeEstoque(),
-                    p.getUnidade(),
-                    p.getPrecoUnitario(),
-                    p.getCategoria().getNome(),
-                    p.getQuantidadeMinima(),
-                    p.getQuantidadeMaxima()
+                    produto.getIdProduto(),
+                    produto.getNome(),
+                    produto.getQuantidadeEstoque(),
+                    produto.getUnidade(),
+                    produto.getPrecoUnitario(),
+                    produto.getCategoria().getNome(),
+                    produto.getQuantidadeMinima(),
+                    produto.getQuantidadeMaxima()
                 });
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao buscar produtos: " + e.getMessage());
         }
     }

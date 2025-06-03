@@ -12,18 +12,13 @@ import java.util.List;
 
 public class CategoriaDAO {
 
-    private Connection con;
-
-    public CategoriaDAO() throws SQLException {
-        ConnectionFactory factory = new ConnectionFactory();
-        this.con = factory.getConnection();
-
-    }
-
-    public void inserir(Categoria categoria) throws SQLException {
+    public void inserir(Categoria categoria) {
         String sql = "INSERT INTO categoria(nome, tamanho, embalagem) VALUES (?, ?, ?)";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection();
+                PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
             stmt.setString(1, categoria.getNome());
             stmt.setString(2, categoria.getTamanho().name());
             stmt.setString(3, categoria.getEmbalagem());
@@ -45,7 +40,9 @@ public class CategoriaDAO {
     public void alterar(Categoria categoria) {
         String sql = "UPDATE categoria SET nome = ?, tamanho = ?, embalagem = ? WHERE idCategoria = ?";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection();
+                PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setString(1, categoria.getNome());
             stmt.setString(2, categoria.getTamanho().name());
@@ -61,7 +58,9 @@ public class CategoriaDAO {
     public void apagar(int idCategoria) {
         String sql = "DELETE FROM categoria WHERE idCategoria = ?";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection();
+                PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setInt(1, idCategoria);
             stmt.executeUpdate();
@@ -75,7 +74,10 @@ public class CategoriaDAO {
         List<Categoria> lista = new ArrayList<>();
         String sql = "SELECT * FROM categoria";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection();
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Categoria categoria = new Categoria();
