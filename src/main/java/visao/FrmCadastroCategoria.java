@@ -10,9 +10,10 @@ import modelo.Categoria;
 import modelo.Tamanho;
 
 public class FrmCadastroCategoria extends javax.swing.JFrame {
-
+    
     public FrmCadastroCategoria() throws SQLException {
         initComponents();
+        setLocationRelativeTo(null);
         this.categoria = new Categoria();
         carregarCategorias();
     }

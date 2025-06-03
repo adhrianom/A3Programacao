@@ -24,6 +24,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
     public FrmCadastroProduto() throws SQLException {
         initComponents();
+        setLocationRelativeTo(null);
         this.produto = new Produto();
         dao = new ProdutoDAO();
         carregarProdutos();

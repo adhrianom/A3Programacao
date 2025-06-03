@@ -9,6 +9,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     public FrmMenuPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -6,6 +6,7 @@ public class FrmRelatorio extends javax.swing.JFrame {
      */
     public FrmRelatorio() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -41,9 +42,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(435, Short.MAX_VALUE)
+                .addContainerGap(426, Short.MAX_VALUE)
                 .addComponent(JBFechar)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         pack();
