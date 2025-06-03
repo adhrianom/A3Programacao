@@ -4,7 +4,7 @@ public abstract class ItemEstoque {
     
     // Classe superior, contendo somente preço e nome.
     
-    private String nome;
+    private String nome; // Nome do produto
     private double precoUnitario;
 
     public ItemEstoque() {

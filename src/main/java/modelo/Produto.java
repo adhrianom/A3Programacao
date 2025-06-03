@@ -5,10 +5,10 @@ import modelo.ItemEstoque;
 
 public class Produto extends ItemEstoque {
 
-    private String unidade; // Kg, Litros, etc.
+    private String unidade; // Kg, Litros, etc...
     private int idProduto; // id para diferenciar produtos.
     private Categoria categoria; // Se referindo a classe Categoria.
-    private int quantidadeEstoque;
+    private int quantidadeEstoque; 
     private int quantidadeMinima;
     private int quantidadeMaxima;
 

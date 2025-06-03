@@ -5,7 +5,7 @@ public class Categoria {
     private String nome; // Nome da categoria.
     private Tamanho tamanho; // Pequeno, Medio e Grande;
     private String embalagem; // Lata, Vidro e Plastico;
-    private int idCategoria;
+    private int idCategoria; // ID da categoria
 
     public Categoria() {
         this("",Tamanho.Pequeno,"",0);

@@ -12,9 +12,9 @@ public class Principal {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro na conexão.");
         }
-     // Instancia a interface gráfica;
+     // Instancia a interface gráfica.
     FrmMenuPrincipal objetotela = new FrmMenuPrincipal();
-    // Torna a janela visível
+    // Torna a janela visível.
     objetotela.setVisible(true);
     }
 }

@@ -2,9 +2,9 @@ package modelo;
 import java.util.Date;
 
 public class GerenciamentoEstoque extends ItemEstoque {
-    private int idProduto;
+    private int idProduto; // ID do produto
     private String operacao; // Entrada ou saida
-    private Date data;
+    private Date data; 
     
 // Mudança conforme solicitado
     public GerenciamentoEstoque() {
