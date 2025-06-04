@@ -130,7 +130,30 @@ public class ProdutoDAO {
         }
         return listarPrecos;
     }   
+ 
+    public List<Produto> listarBalanco() {
+    List<Produto> listaBalanco = new ArrayList<>();
+    String sql = "SELECT * FROM produto";
 
+     ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection();
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            Produto produto = new Produto();
+            produto.setNome(rs.getString("nome"));
+            produto.setPrecoUnitario(rs.getDouble("precoUnitario"));
+            produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+            listaBalanco.add(produto);
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Erro ao listar balanço dos produtos: " + e.getMessage());
+    }
+
+    return listaBalanco;
+}
 
     public Produto buscarPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
