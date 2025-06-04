@@ -1,5 +1,11 @@
 package visao;
 
+import dao.ProdutoDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Produto;
+
 public class FrmRelatorio extends javax.swing.JFrame {
     /**
      * Creates new form FrmRelatorio
@@ -190,7 +196,7 @@ private void gerarListaPrecos() {
 
               
     }
-} 
+
     /**
      * @param args the command line arguments
      */

@@ -103,6 +103,34 @@ public class ProdutoDAO {
 
         return lista;
     }
+    
+    public List<Produto> listarPrecos() throws SQLException{
+        List<Produto> listarPrecos = new ArrayList<>();
+        String sql = "SELECT * FROM produto";
+        
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection();
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
+            
+            while (rs.next()) {
+                Produto produto = new Produto();
+             
+                produto.setNome(rs.getString("nome"));
+                produto.setPrecoUnitario(rs.getDouble("precoUnitario"));
+                produto.setUnidade(rs.getString("unidade"));
+                Categoria categoria = new Categoria();
+                categoria.setNome(rs.getString("categoria"));
+                produto.setCategoria(categoria);
+                listarPrecos.add(produto);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar os preços: " + e.getMessage());
+        }
+        return listarPrecos;
+    }   
+
 
     public Produto buscarPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
