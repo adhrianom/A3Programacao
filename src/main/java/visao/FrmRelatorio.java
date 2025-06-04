@@ -234,6 +234,29 @@ private void gerarBalanco() {
         JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
 }
+private void FaltaProdutos() {
+    try {
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> listaFalta = dao.listarFaltaProdutos();
+
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Nome", "Quantidade Mínima", "Quantidade no Estoque"}, 0
+        );
+
+        for (Produto produto : listaFalta) {
+            model.addRow(new Object[]{
+                produto.getNome(),
+                produto.getQuantidadeMinima(),
+                produto.getQuantidadeEstoque()
+            });
+        }
+
+        JTRelatorio.setModel(model);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+    }
+}
     /**
      * @param args the command line arguments
      */
