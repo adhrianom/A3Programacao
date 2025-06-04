@@ -202,11 +202,38 @@ private void gerarListaPrecos() {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-        }        
-
-              
+        }               
     }
+private void gerarBalanco() {
+    try {
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> listaBalanco = dao.listarBalanco();
 
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Nome", "Preço Unitário", "Quantidade", "Total"}, 0
+        );
+
+        double totalGeral = 0;
+
+        for (Produto produto : listaBalanco) {
+            double total = produto.getPrecoUnitario() * produto.getQuantidadeEstoque();
+            totalGeral += total;
+
+            model.addRow(new Object[]{
+                produto.getNome(),
+                produto.getPrecoUnitario(),
+                produto.getQuantidadeEstoque(),
+                total
+            });
+        }
+
+        JTRelatorio.setModel(model);
+        JOptionPane.showMessageDialog(this, "Total em estoque: R$ " + totalGeral);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+    }
+}
     /**
      * @param args the command line arguments
      */
