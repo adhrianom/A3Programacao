@@ -19,6 +19,13 @@ public class FrmRelatorio extends javax.swing.JFrame {
     private void initComponents() {
 
         JBFechar = new javax.swing.JButton();
+        JBLista = new javax.swing.JButton();
+        JBFalta = new javax.swing.JButton();
+        JBBalanco = new javax.swing.JButton();
+        JBExcesso = new javax.swing.JButton();
+        JBCategoria = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTRelatorio = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Relatório");
@@ -30,21 +37,104 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBLista.setText("Lista de preços");
+        JBLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBListaActionPerformed(evt);
+            }
+        });
+
+        JBFalta.setText("Falta de produtos");
+        JBFalta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBFaltaActionPerformed(evt);
+            }
+        });
+
+        JBBalanco.setText("Balanço físico");
+        JBBalanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBBalancoActionPerformed(evt);
+            }
+        });
+
+        JBExcesso.setText("Excesso de produtos");
+        JBExcesso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBExcessoActionPerformed(evt);
+            }
+        });
+
+        JBCategoria.setText("Produtos por categoria");
+        JBCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCategoriaActionPerformed(evt);
+            }
+        });
+
+        JTRelatorio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(JTRelatorio);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(686, Short.MAX_VALUE)
-                .addComponent(JBFechar)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(JBLista)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBBalanco))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(JBFalta)
+                        .addGap(78, 78, 78)
+                        .addComponent(JBExcesso)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(JBCategoria))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(JBFechar)))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(426, Short.MAX_VALUE)
-                .addComponent(JBFechar)
-                .addGap(15, 15, 15))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JBCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JBLista)
+                        .addComponent(JBBalanco)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(JBFalta))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JBExcesso)
+                            .addComponent(JBFechar))))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -55,6 +145,52 @@ public class FrmRelatorio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBFecharActionPerformed
 
+    private void JBListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBListaActionPerformed
+        gerarListaPrecos();
+    }//GEN-LAST:event_JBListaActionPerformed
+
+    private void JBBalancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBalancoActionPerformed
+       gerarBalanco();
+    }//GEN-LAST:event_JBBalancoActionPerformed
+
+    private void JBExcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExcessoActionPerformed
+        gerarExcessoProdutos();
+    }//GEN-LAST:event_JBExcessoActionPerformed
+
+    private void JBCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCategoriaActionPerformed
+        gerarPorCategoria();
+    }//GEN-LAST:event_JBCategoriaActionPerformed
+
+    private void JBFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFaltaActionPerformed
+        gerarFaltaProdutos();
+    }//GEN-LAST:event_JBFaltaActionPerformed
+private void gerarListaPrecos() { 
+    try {
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> lista = dao.listarPrecos();
+
+            DefaultTableModel model = new DefaultTableModel(
+                new Object[]{"Nome", "Preço Unitário", "Unidade", "Categoria"}, 0
+            );
+
+            for (Produto produto : lista) {
+                model.addRow(new Object[]{
+                    produto.getNome(),
+                    produto.getPrecoUnitario(),
+                    produto.getUnidade(),
+                    produto.getCategoria().getNome()
+                });
+            }
+
+            JTRelatorio.setModel(model);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }        
+
+              
+    }
+} 
     /**
      * @param args the command line arguments
      */
@@ -91,6 +227,13 @@ public class FrmRelatorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBBalanco;
+    private javax.swing.JButton JBCategoria;
+    private javax.swing.JButton JBExcesso;
+    private javax.swing.JButton JBFalta;
     private javax.swing.JButton JBFechar;
+    private javax.swing.JButton JBLista;
+    private javax.swing.JTable JTRelatorio;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
