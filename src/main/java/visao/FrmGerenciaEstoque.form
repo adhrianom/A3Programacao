@@ -30,12 +30,12 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="1" pref="762" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -44,38 +44,38 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="JTFQuantidade" min="-2" pref="135" max="-2" attributes="0"/>
+                              <Component id="JTFQuantidade" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="JBAlterarQuantidade" max="32767" attributes="0"/>
+                          <Component id="JBAlterarQuantidade" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jLabel3" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="JTFAumentoPreco" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="JBAplicarAumento" min="-2" pref="216" max="-2" attributes="0"/>
+                          <Component id="JBAplicarAumento" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="JTFReducaoPreco" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="JBAplicarReducao" min="-2" pref="216" max="-2" attributes="0"/>
+                          <Component id="JBAplicarReducao" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="JTFPesquisar" min="-2" pref="429" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="JBPesquisar" min="-2" pref="85" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="JBPesquisar" min="-2" pref="123" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -154,7 +154,7 @@
                 <Column editable="true" title="ID" type="java.lang.Object"/>
                 <Column editable="true" title="Nome" type="java.lang.Object"/>
                 <Column editable="true" title="Quantidade" type="java.lang.Object"/>
-                <Column editable="true" title="Unidade" type="java.lang.Object"/>
+                <Column editable="true" title="Medida" type="java.lang.Object"/>
                 <Column editable="true" title="Pre&#xe7;o" type="java.lang.Object"/>
                 <Column editable="true" title="Categoria" type="java.lang.Object"/>
                 <Column editable="true" title="Qntd. M&#xed;nima" type="java.lang.Object"/>

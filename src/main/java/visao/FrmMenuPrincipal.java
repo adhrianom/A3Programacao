@@ -51,7 +51,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        JBRelatorio.setText("Relatório");
+        JBRelatorio.setText("Relatórios");
         JBRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBRelatorioActionPerformed(evt);

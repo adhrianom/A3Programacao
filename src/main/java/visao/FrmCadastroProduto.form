@@ -41,10 +41,10 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="JTFPreco" min="-2" pref="94" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" pref="47" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" pref="59" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="JCUnidade" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="JCMedida" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JTFQuantidadeMaxima" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JCUnidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JCMedida" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -176,7 +176,7 @@
                 <Column editable="true" title="ID" type="java.lang.Object"/>
                 <Column editable="true" title="Nome" type="java.lang.Object"/>
                 <Column editable="true" title="Quantidade" type="java.lang.Object"/>
-                <Column editable="true" title="Unidade" type="java.lang.Object"/>
+                <Column editable="true" title="Medida" type="java.lang.Object"/>
                 <Column editable="true" title="Pre&#xe7;o" type="java.lang.Object"/>
                 <Column editable="true" title="Categoria" type="java.lang.Object"/>
                 <Column editable="true" title="Qntd. M&#xed;nima" type="java.lang.Object"/>
@@ -225,17 +225,18 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Unidade:"/>
+        <Property name="text" type="java.lang.String" value="Medida:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="JCUnidade">
+    <Component class="javax.swing.JComboBox" name="JCMedida">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Kilogramas"/>
-            <StringItem index="1" value="Gramas"/>
-            <StringItem index="2" value="Litros"/>
-            <StringItem index="3" value="Mililitros"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Unidade"/>
+            <StringItem index="1" value="Kilogramas"/>
+            <StringItem index="2" value="Gramas"/>
+            <StringItem index="3" value="Litros"/>
+            <StringItem index="4" value="Mililitros"/>
           </StringArray>
         </Property>
       </Properties>
