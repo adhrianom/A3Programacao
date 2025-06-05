@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Produto;
 
 public class FrmRelatorio extends javax.swing.JFrame {
+
     /**
      * Creates new form FrmRelatorio
      */
@@ -166,7 +167,7 @@ public class FrmRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_JBListaActionPerformed
 
     private void JBBalancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBalancoActionPerformed
-       gerarBalanco();
+        gerarBalanco();
     }//GEN-LAST:event_JBBalancoActionPerformed
 
     private void JBExcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExcessoActionPerformed
@@ -180,13 +181,13 @@ public class FrmRelatorio extends javax.swing.JFrame {
     private void JBFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFaltaActionPerformed
         gerarFaltaProdutos();
     }//GEN-LAST:event_JBFaltaActionPerformed
-private void gerarListaPrecos() { 
-    try {
-        ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> lista = dao.listarPrecos();
+    private void gerarListaPrecos() {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> lista = dao.listarPrecos();
 
             DefaultTableModel model = new DefaultTableModel(
-                new Object[]{"Nome", "Preço Unitário", "Unidade", "Categoria"}, 0
+                    new Object[]{"Nome", "Preço Unitário", "Unidade", "Categoria"}, 0
             );
 
             for (Produto produto : lista) {
@@ -202,103 +203,108 @@ private void gerarListaPrecos() {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-        }               
-    }
-private void gerarBalanco() {
-    try {
-        ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> listaBalanco = dao.listarBalanco();
-
-        DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Nome", "Preço Unitário", "Quantidade", "Total"}, 0
-        );
-
-        double totalGeral = 0;
-
-        for (Produto produto : listaBalanco) {
-            double total = produto.getPrecoUnitario() * produto.getQuantidadeEstoque();
-            totalGeral += total;
-
-            model.addRow(new Object[]{
-                produto.getNome(),
-                produto.getPrecoUnitario(),
-                produto.getQuantidadeEstoque(),
-                total
-            });
         }
-
-        JTRelatorio.setModel(model);
-        JOptionPane.showMessageDialog(this, "Total em estoque: R$ " + totalGeral);
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
-}
-private void gerarFaltaProdutos() {
-    try {
-        ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> listaFalta = dao.listarFaltaProduto();
 
-        DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Nome", "Quantidade Mínima", "Quantidade no Estoque"}, 0
-        );
+    private void gerarBalanco() {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> listaBalanco = dao.listarBalanco();
 
-        for (Produto produto : listaFalta) {
-            model.addRow(new Object[]{
-                produto.getNome(),
-                produto.getQuantidadeMinima(),
-                produto.getQuantidadeEstoque()
-            });
+            DefaultTableModel model = new DefaultTableModel(
+                    new Object[]{"Nome", "Preço Unitário", "Quantidade", "Total"}, 0
+            );
+
+            double totalGeral = 0;
+
+            for (Produto produto : listaBalanco) {
+                double total = produto.getPrecoUnitario() * produto.getQuantidadeEstoque();
+                totalGeral += total;
+
+                model.addRow(new Object[]{
+                    produto.getNome(),
+                    produto.getPrecoUnitario(),
+                    produto.getQuantidadeEstoque(),
+                    total
+                });
+            }
+
+            JTRelatorio.setModel(model);
+            JOptionPane.showMessageDialog(this, "Total em estoque: R$ " + totalGeral);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
         }
-
-        JTRelatorio.setModel(model);
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
-}
-private void gerarExcessoProdutos() {
-    try {
-        ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> listaExcesso = dao.listarExcessoProdutos();
 
-        DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Nome", "Quantidade Máxima", "Quantidade no Estoque"}, 0
-        );
+    private void gerarFaltaProdutos() {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> listaFalta = dao.listarFaltaProduto();
 
-        for (Produto produto : listaExcesso) {
-            model.addRow(new Object[]{
-                produto.getNome(),
-                produto.getQuantidadeMaxima(),
-                produto.getQuantidadeEstoque()
-            });
+            DefaultTableModel model = new DefaultTableModel(
+                    new Object[]{"Nome", "Quantidade Mínima", "Quantidade no Estoque"}, 0
+            );
+
+            for (Produto produto : listaFalta) {
+                model.addRow(new Object[]{
+                    produto.getNome(),
+                    produto.getQuantidadeMinima(),
+                    produto.getQuantidadeEstoque()
+                });
+            }
+
+            JTRelatorio.setModel(model);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
         }
-
-        JTRelatorio.setModel(model);
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
-}
-private void gerarPorCategoria() {
-    try {
-        ProdutoDAO dao = new ProdutoDAO();
-        List<String[]> listaCategoria = dao.listarPorCategoria();
 
-        DefaultTableModel model = new DefaultTableModel(
-            new Object[]{"Categoria", "Total de Produtos"}, 0
-        );
+    private void gerarExcessoProdutos() {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> listaExcesso = dao.listarExcessoProdutos();
 
-        for (String[] linha : listaCategoria) {
-            model.addRow(linha);
+            DefaultTableModel model = new DefaultTableModel(
+                    new Object[]{"Nome", "Quantidade Máxima", "Quantidade no Estoque"}, 0
+            );
+
+            for (Produto produto : listaExcesso) {
+                model.addRow(new Object[]{
+                    produto.getNome(),
+                    produto.getQuantidadeMaxima(),
+                    produto.getQuantidadeEstoque()
+                });
+            }
+
+            JTRelatorio.setModel(model);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
         }
-
-        JTRelatorio.setModel(model);
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
-    }   
+
+    private void gerarPorCategoria() {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<String[]> listaCategoria = dao.listarPorCategoria();
+
+            DefaultTableModel model = new DefaultTableModel(
+                    new Object[]{"Categoria", "Total de Produtos"}, 0
+            );
+
+            for (String[] linha : listaCategoria) {
+                model.addRow(linha);
+            }
+
+            JTRelatorio.setModel(model);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+        }
+    }
+
     /**
      * @param args the command line arguments
      */

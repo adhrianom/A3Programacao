@@ -78,9 +78,7 @@ public class ProdutoDAO {
         String sql = "SELECT * FROM produto";
 
         ConnectionFactory factory = new ConnectionFactory();
-        try (Connection conexao = factory.getConnection();
-                PreparedStatement stmt = conexao.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Produto produto = new Produto();
@@ -103,19 +101,17 @@ public class ProdutoDAO {
 
         return lista;
     }
-    
-    public List<Produto> listarPrecos() throws SQLException{
+
+    public List<Produto> listarPrecos() {
         List<Produto> listarPrecos = new ArrayList<>();
         String sql = "SELECT * FROM produto";
-        
+
         ConnectionFactory factory = new ConnectionFactory();
-        try (Connection conexao = factory.getConnection();
-                PreparedStatement stmt = conexao.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
-            
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
             while (rs.next()) {
                 Produto produto = new Produto();
-             
+
                 produto.setNome(rs.getString("nome"));
                 produto.setPrecoUnitario(rs.getDouble("precoUnitario"));
                 produto.setUnidade(rs.getString("unidade"));
@@ -129,105 +125,100 @@ public class ProdutoDAO {
             System.err.println("Erro ao listar os preços: " + e.getMessage());
         }
         return listarPrecos;
-    }   
- 
+    }
+
     public List<Produto> listarBalanco() {
-    List<Produto> listaBalanco = new ArrayList<>();
-    String sql = "SELECT * FROM produto";
+        List<Produto> listaBalanco = new ArrayList<>();
+        String sql = "SELECT nome, precoUnitario, quantidadeEstoque FROM produto ORDER BY nome";
 
-     ConnectionFactory factory = new ConnectionFactory();
-        try (Connection conexao = factory.getConnection();
-                PreparedStatement stmt = conexao.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
-        while (rs.next()) {
-            Produto produto = new Produto();
-            produto.setNome(rs.getString("nome"));
-            produto.setPrecoUnitario(rs.getDouble("precoUnitario"));
-            produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
-            listaBalanco.add(produto);
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setNome(rs.getString("nome"));
+                produto.setPrecoUnitario(rs.getDouble("precoUnitario"));
+                produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                listaBalanco.add(produto);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar balanço dos produtos: " + e.getMessage());
         }
 
-    } catch (SQLException e) {
-        System.err.println("Erro ao listar balanço dos produtos: " + e.getMessage());
+        return listaBalanco;
     }
 
-    return listaBalanco;
-}
-public List<Produto> listarFaltaProduto() {
-    List<Produto> listaFalta = new ArrayList<>();
-    String sql = "SELECT nome, quantidadeMinima, quantidadeEstoque FROM produto WHERE quantidadeEstoque < quantidadeMinima";
+    public List<Produto> listarFaltaProduto() {
+        List<Produto> listaFalta = new ArrayList<>();
+        String sql = "SELECT nome, quantidadeMinima, quantidadeEstoque FROM produto WHERE quantidadeEstoque < quantidadeMinima";
 
-    ConnectionFactory factory  = new ConnectionFactory();                                                                      
-    try (Connection conexao = factory.getConnection();
-         PreparedStatement stmt = conexao.prepareStatement(sql);
-         ResultSet rs = stmt.executeQuery()) {
-        
-        while (rs.next()) {
-            Produto produto = new Produto();
-            produto.setNome(rs.getString("nome"));
-            produto.setQuantidadeMinima(rs.getInt("quantidadeMinima"));
-            produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
-            listaFalta.add(produto);
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setNome(rs.getString("nome"));
+                produto.setQuantidadeMinima(rs.getInt("quantidadeMinima"));
+                produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                listaFalta.add(produto);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar falta dos produtos: " + e.getMessage());
         }
 
-    } catch (SQLException e) {
-        System.err.println("Erro ao listar falta dos produtos: " + e.getMessage());
+        return listaFalta;
     }
 
-    return listaFalta;
-}
-public List<Produto> listarExcessoProdutos() {
-    List<Produto> listaExcesso = new ArrayList<>();
-    String sql = "SELECT nome, quantidadeMaxima, quantidadeEstoque FROM produto WHERE quantidadeEstoque < quantidadeMaxima";
+    public List<Produto> listarExcessoProdutos() {
+        List<Produto> listaExcesso = new ArrayList<>();
+        String sql = "SELECT nome, quantidadeMaxima, quantidadeEstoque FROM produto WHERE quantidadeEstoque > quantidadeMaxima";
 
-   ConnectionFactory factory = new ConnectionFactory();
- try (Connection conexao = factory.getConnection();
-         PreparedStatement stmt = conexao.prepareStatement(sql);
-         ResultSet rs = stmt.executeQuery()) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
-        while (rs.next()) {
-            Produto produto = new Produto();
-            produto.setNome(rs.getString("nome"));
-            produto.setQuantidadeMaxima(rs.getInt("quantidadeMaxima"));
-            produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
-            listaExcesso.add(produto);
+            while (rs.next()) {
+                Produto produto = new Produto();
+                produto.setNome(rs.getString("nome"));
+                produto.setQuantidadeMaxima(rs.getInt("quantidadeMaxima"));
+                produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                listaExcesso.add(produto);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar excesso dos produtos: " + e.getMessage());
         }
 
-    } catch (SQLException e) {
-        System.err.println("Erro ao listar excesso dos produtos: " + e.getMessage());
+        return listaExcesso;
     }
 
-    return listaExcesso;
-}
-public List<String[]> listarPorCategoria() {
-    List<String[]> listaCategoria = new ArrayList<>();
-    String sql = "SELECT categoria FROM produtos";
+    public List<String[]> listarPorCategoria() {
+        List<String[]> listaCategoria = new ArrayList<>();
+        String sql = "SELECT categoria, COUNT(*) AS total FROM produto GROUP BY categoria";
 
-    ConnectionFactory factory = new ConnectionFactory();   try (Connection conexao = new ConnectionFactory().getConnection();
-         PreparedStatement stmt = conexao.prepareStatement(sql);
-         ResultSet rs = stmt.executeQuery()) {
+        ConnectionFactory factory = new ConnectionFactory();
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
-        while (rs.next()) {
-            String[] linha = new String[2];
-            linha[0] = rs.getString("categoria");
-            linha[1] = String.valueOf(rs.getInt("total"));
-            listaCategoria.add(linha);
+            while (rs.next()) {
+                String[] linha = new String[2];
+                linha[0] = rs.getString("categoria");
+                linha[1] = String.valueOf(rs.getInt("total"));
+                listaCategoria.add(linha);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar produtos por categoria: " + e.getMessage());
         }
 
-    } catch (SQLException e) {
-        System.err.println("Erro ao listar produtos por categoria: " + e.getMessage());
+        return listaCategoria;
     }
-
-    return listaCategoria;
-}
 
     public Produto buscarPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
 
         ConnectionFactory factory = new ConnectionFactory();
-        try (Connection conexao = factory.getConnection();
-                PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        try (Connection conexao = factory.getConnection(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setInt(1, idProduto);
             ResultSet rs = stmt.executeQuery();
