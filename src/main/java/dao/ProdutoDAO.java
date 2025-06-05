@@ -154,6 +154,29 @@ public class ProdutoDAO {
 
     return listaBalanco;
 }
+public List<Produto> listarFaltaProduto() {
+    List<Produto> listaFalta = new ArrayList<>();
+    String sql = "SELECT nome, quantidadeMinima, quantidadeEstoque FROM produto WHERE quantidadeEstoque < quantidadeMinima";
+
+    ConnectionFactory factory  = new ConnectionFactory();                                                                      
+    try (Connection conexao = factory.getConnection();
+         PreparedStatement stmt = conexao.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+        
+        while (rs.next()) {
+            Produto produto = new Produto();
+            produto.setNome(rs.getString("nome"));
+            produto.setQuantidadeMinima(rs.getInt("quantidadeMinima"));
+            produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+            listaFalta.add(produto);
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Erro ao listar falta dos produtos: " + e.getMessage());
+    }
+
+    return listaFalta;
+}
 
     public Produto buscarPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
