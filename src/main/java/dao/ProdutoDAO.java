@@ -177,7 +177,29 @@ public List<Produto> listarFaltaProduto() {
 
     return listaFalta;
 }
+public List<Produto> listarExcessoProdutos() {
+    List<Produto> listaExcesso = new ArrayList<>();
+    String sql = "SELECT nome, quantidadeMaxima, quantidadeEstoque FROM produto WHERE quantidadeEstoque < quantidadeMaxima";
 
+   ConnectionFactory factory = new ConnectionFactory();
+ try (Connection conexao = factory.getConnection();
+         PreparedStatement stmt = conexao.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            Produto produto = new Produto();
+            produto.setNome(rs.getString("nome"));
+            produto.setQuantidadeMaxima(rs.getInt("quantidadeMaxima"));
+            produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+            listaExcesso.add(produto);
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Erro ao listar excesso dos produtos: " + e.getMessage());
+    }
+
+    return listaExcesso;
+}
     public Produto buscarPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
 
