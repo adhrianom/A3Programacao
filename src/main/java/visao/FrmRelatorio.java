@@ -234,10 +234,10 @@ private void gerarBalanco() {
         JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
 }
-private void FaltaProdutos() {
+private void gerarFaltaProdutos() {
     try {
         ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> listaFalta = dao.listarFaltaProdutos();
+        List<Produto> listaFalta = dao.listarFaltaProduto();
 
         DefaultTableModel model = new DefaultTableModel(
             new Object[]{"Nome", "Quantidade Mínima", "Quantidade no Estoque"}, 0

@@ -200,6 +200,28 @@ public List<Produto> listarExcessoProdutos() {
 
     return listaExcesso;
 }
+public List<String[]> listarPorCategoria() {
+    List<String[]> listaCategoria = new ArrayList<>();
+    String sql = "SELECT categoria FROM produtos";
+
+    ConnectionFactory factory = new ConnectionFactory();   try (Connection conexao = new ConnectionFactory().getConnection();
+         PreparedStatement stmt = conexao.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            String[] linha = new String[2];
+            linha[0] = rs.getString("categoria");
+            linha[1] = String.valueOf(rs.getInt("total"));
+            listaCategoria.add(linha);
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Erro ao listar produtos por categoria: " + e.getMessage());
+    }
+
+    return listaCategoria;
+}
+
     public Produto buscarPorId(int idProduto) {
         String sql = "SELECT * FROM produto WHERE idProduto = ?";
 
