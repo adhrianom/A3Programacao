@@ -257,6 +257,29 @@ private void FaltaProdutos() {
         JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
 }
+private void gerarExcessoProdutos() {
+    try {
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> listaExcesso = dao.listarExcessoProdutos();
+
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Nome", "Quantidade Máxima", "Quantidade no Estoque"}, 0
+        );
+
+        for (Produto produto : listaExcesso) {
+            model.addRow(new Object[]{
+                produto.getNome(),
+                produto.getQuantidadeMaxima(),
+                produto.getQuantidadeEstoque()
+            });
+        }
+
+        JTRelatorio.setModel(model);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+    }
+}
     /**
      * @param args the command line arguments
      */
