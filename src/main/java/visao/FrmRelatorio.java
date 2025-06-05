@@ -280,6 +280,25 @@ private void gerarExcessoProdutos() {
         JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
     }
 }
+private void gerarPorCategoria() {
+    try {
+        ProdutoDAO dao = new ProdutoDAO();
+        List<String[]> listaCategoria = dao.listarPorCategoria();
+
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"Categoria", "Total de Produtos"}, 0
+        );
+
+        for (String[] linha : listaCategoria) {
+            model.addRow(linha);
+        }
+
+        JTRelatorio.setModel(model);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
+    }
+    }   
     /**
      * @param args the command line arguments
      */
