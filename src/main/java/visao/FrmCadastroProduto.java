@@ -281,10 +281,6 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         try {
             String nome = JTFNome.getText();
             String unidade = JCMedida.getSelectedItem().toString();
-            double preco = Double.parseDouble(JTFPreco.getText());
-            int quantidadeEstoque = Integer.parseInt(JTFQuantidade.getText());
-            int quantidadeMinima = Integer.parseInt(JTFQuantidadeMinima.getText());
-            int quantidadeMaxima = Integer.parseInt(JTFQuantidadeMaxima.getText());
             Categoria categoria = (Categoria) JCCategoria.getSelectedItem();
 
             Produto produto = new Produto();
@@ -294,16 +290,33 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 produto.setNome(nome);
             }
             
-            if(this.JTFQuantidade.getText().length() < 1){
+            if(JTFQuantidade.getText().trim().isEmpty()){
                 throw new Mensagem("Deve conter no minimo 1 produto.");
             } else {
+                int quantidadeEstoque = Integer.parseInt(JTFQuantidade.getText().trim());
                 produto.setQuantidadeEstoque(quantidadeEstoque);
             }
-           
-            produto.setQuantidadeMinima(quantidadeMinima);
-            produto.setQuantidadeMaxima(quantidadeMaxima);
+            
+            if(JTFQuantidadeMinima.getText().trim().isEmpty()){
+                throw new Mensagem("A quantidade minima deve ser acima de 0.");
+            } else{
+                int quantidadeMinima = Integer.parseInt(JTFQuantidadeMinima.getText().trim());
+                produto.setQuantidadeMinima(quantidadeMinima);
+            }
+            if(JTFQuantidadeMaxima.getText().trim().isEmpty()){
+                throw new Mensagem("A quantidade máxima deve ser acima de 0.");
+            } else {
+                int quantidadeMaxima = Integer.parseInt(JTFQuantidadeMaxima.getText().trim());
+                produto.setQuantidadeMaxima(quantidadeMaxima);
+            }
+            if(JTFPreco.getText().trim().isEmpty()){
+                throw new Mensagem("O preço deve ser acima de R$ 0.");
+            } else {
+                double preco = Double.parseDouble(JTFPreco.getText().trim());
+                produto.setPrecoUnitario(preco);
+            }
+        
             produto.setUnidade(unidade);
-            produto.setPrecoUnitario(preco);
             produto.setCategoria(categoria);
             
             dao.inserir(produto);
@@ -316,7 +329,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             JTFQuantidadeMaxima.setText("");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao adicionar produto.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage() != null ? e.getMessage() : toString(), "Erro ao adicionar produto.", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_JBAdicionarActionPerformed
     private void carregarProdutos() {
