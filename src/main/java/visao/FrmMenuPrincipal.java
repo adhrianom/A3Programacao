@@ -27,6 +27,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
 
+        JBCadastroCategoria.setBackground(new java.awt.Color(204, 204, 204));
+        JBCadastroCategoria.setForeground(new java.awt.Color(51, 51, 51));
         JBCadastroCategoria.setText("Cadastrar Categoria");
         JBCadastroCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -34,6 +36,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        JBCadastroProduto.setBackground(new java.awt.Color(204, 204, 204));
+        JBCadastroProduto.setForeground(new java.awt.Color(51, 51, 51));
         JBCadastroProduto.setText("Cadastrar Produto");
         JBCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,6 +45,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        JBGerenciaEstoque.setBackground(new java.awt.Color(204, 204, 204));
+        JBGerenciaEstoque.setForeground(new java.awt.Color(51, 51, 51));
         JBGerenciaEstoque.setText("Gerenciar Estoque");
         JBGerenciaEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +54,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        JBRelatorio.setBackground(new java.awt.Color(204, 204, 204));
+        JBRelatorio.setForeground(new java.awt.Color(51, 51, 51));
         JBRelatorio.setText("Relatórios");
         JBRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +63,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        JBSair.setBackground(new java.awt.Color(204, 204, 204));
+        JBSair.setForeground(new java.awt.Color(51, 51, 51));
         JBSair.setText("Sair");
         JBSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +73,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("CONTROLE DE ESTOQUE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
