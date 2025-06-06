@@ -114,6 +114,12 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
 
         jLabel6.setText("Encontrar Produto:");
 
+        JTFPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFPesquisarActionPerformed(evt);
+            }
+        });
+
         JBPesquisar.setText("Pesquisar");
         JBPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,6 +359,11 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         
         JTFQuantidade.setText("");
     }//GEN-LAST:event_JBAlterarQuantidadeActionPerformed
+
+    private void JTFPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFPesquisarActionPerformed
+        // TODO add your handling code here:
+        JBPesquisar.doClick();
+    }//GEN-LAST:event_JTFPesquisarActionPerformed
     private void carregarProdutos() {
         try {
             DefaultTableModel model = (DefaultTableModel) JTEstoque.getModel();

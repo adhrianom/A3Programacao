@@ -22,6 +22,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         JBGerenciaEstoque = new javax.swing.JButton();
         JBRelatorio = new javax.swing.JButton();
         JBSair = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
@@ -61,6 +62,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel1.setText("CONTROLE DE ESTOQUE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,11 +83,17 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                             .addComponent(JBRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(120, 120, 120)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JBCadastroCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(JBCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,5 +191,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton JBGerenciaEstoque;
     private javax.swing.JButton JBRelatorio;
     private javax.swing.JButton JBSair;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
