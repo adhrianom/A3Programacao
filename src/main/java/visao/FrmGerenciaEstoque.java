@@ -8,11 +8,6 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Produto;
 
 public class FrmGerenciaEstoque extends javax.swing.JFrame {
-//gabriel
-
-    /**
-     * Creates new form FrmGerenciaEstoque
-     */
     private ProdutoDAO dao;
 
     public FrmGerenciaEstoque() throws SQLException {
@@ -252,6 +247,10 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao aplicar aumento: " + e.getMessage());
         }
+        
+        // Setando valores iniciais
+        
+        JTFAumentoPreco.setText("");
     }//GEN-LAST:event_JBAplicarAumentoActionPerformed
 
     private void JTFQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFQuantidadeActionPerformed
@@ -299,6 +298,10 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao aplicar desconto: " + e.getMessage());
         }
+        
+        // Setando os valores iniciais
+        
+        JTFReducaoPreco.setText("");
     }//GEN-LAST:event_JBAplicarReducaoActionPerformed
 
     private void JBAlterarQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarQuantidadeActionPerformed
@@ -349,6 +352,11 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
         }
+        
+        
+        // Setando os valores iniciais
+        
+        JTFQuantidade.setText("");
     }//GEN-LAST:event_JBAlterarQuantidadeActionPerformed
     private void carregarProdutos() {
         try {
