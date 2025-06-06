@@ -83,6 +83,12 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             }
         });
 
+        JTFEmbalagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFEmbalagemActionPerformed(evt);
+            }
+        });
+
         JBAdicionar.setText("Adicionar");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,6 +277,13 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "Categoria apagada.");
     }//GEN-LAST:event_JBRemoverActionPerformed
+
+    private void JTFEmbalagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFEmbalagemActionPerformed
+        // TODO add your handling code here:
+        
+        JBAdicionar.doClick();
+        
+    }//GEN-LAST:event_JTFEmbalagemActionPerformed
     private void carregarCategorias() {
         try {
             DefaultTableModel model = (DefaultTableModel) JTCategoria.getModel();

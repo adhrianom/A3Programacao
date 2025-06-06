@@ -288,8 +288,18 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             Categoria categoria = (Categoria) JCCategoria.getSelectedItem();
 
             Produto produto = new Produto();
-            produto.setNome(nome);
-            produto.setQuantidadeEstoque(quantidadeEstoque);
+            if (this.JTFNome.getText().length() < 2){
+                throw new Mensagem("O nome do produto deve conter no minimo 2 caractéres.");
+            } else {
+                produto.setNome(nome);
+            }
+            
+            if(this.JTFQuantidade.getText().length() < 1){
+                throw new Mensagem("Deve conter no minimo 1 produto.");
+            } else {
+                produto.setQuantidadeEstoque(quantidadeEstoque);
+            }
+           
             produto.setQuantidadeMinima(quantidadeMinima);
             produto.setQuantidadeMaxima(quantidadeMaxima);
             produto.setUnidade(unidade);
