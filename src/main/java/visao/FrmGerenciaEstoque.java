@@ -43,6 +43,8 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciamento de Estoque");
 
+        JBFechar.setBackground(new java.awt.Color(204, 204, 204));
+        JBFechar.setForeground(new java.awt.Color(51, 51, 51));
         JBFechar.setText("Fechar");
         JBFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +52,9 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
+        JTEstoque.setBackground(new java.awt.Color(204, 204, 204));
+        JTEstoque.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JTEstoque.setForeground(new java.awt.Color(51, 51, 51));
         JTEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -61,18 +66,30 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
                 "ID", "Nome", "Quantidade", "Medida", "Preço", "Categoria", "Qntd. Mínima", "Qntd. Máxima"
             }
         ));
+        JTEstoque.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        JTEstoque.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(JTEstoque);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Quantidade: ");
 
+        JTFQuantidade.setBackground(new java.awt.Color(204, 204, 204));
+        JTFQuantidade.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JTFQuantidade.setForeground(new java.awt.Color(51, 51, 51));
         JTFQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFQuantidadeActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Operação:");
 
+        JCOperacao.setBackground(new java.awt.Color(204, 204, 204));
+        JCOperacao.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JCOperacao.setForeground(new java.awt.Color(51, 51, 51));
         JCOperacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saída" }));
         JCOperacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +97,13 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Aumento Percentual:");
 
+        JBAlterarQuantidade.setBackground(new java.awt.Color(204, 204, 204));
+        JBAlterarQuantidade.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBAlterarQuantidade.setForeground(new java.awt.Color(51, 51, 51));
         JBAlterarQuantidade.setText("Alterar Quantidade");
         JBAlterarQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +111,9 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
+        JBAplicarAumento.setBackground(new java.awt.Color(204, 204, 204));
+        JBAplicarAumento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBAplicarAumento.setForeground(new java.awt.Color(51, 51, 51));
         JBAplicarAumento.setText("Aplicar Aumento de Preço");
         JBAplicarAumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,30 +121,46 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerência de Estoque", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 15))); // NOI18N
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gerência de Estoque", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(51, 51, 51))); // NOI18N
 
+        JTFAumentoPreco.setBackground(new java.awt.Color(204, 204, 204));
+        JTFAumentoPreco.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JTFAumentoPreco.setForeground(new java.awt.Color(51, 51, 51));
         JTFAumentoPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFAumentoPrecoActionPerformed(evt);
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Redução Percentual:");
 
+        JTFReducaoPreco.setBackground(new java.awt.Color(204, 204, 204));
+        JTFReducaoPreco.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JTFReducaoPreco.setForeground(new java.awt.Color(51, 51, 51));
         JTFReducaoPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFReducaoPrecoActionPerformed(evt);
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Encontrar Produto:");
 
+        JTFPesquisar.setBackground(new java.awt.Color(204, 204, 204));
+        JTFPesquisar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JTFPesquisar.setForeground(new java.awt.Color(51, 51, 51));
         JTFPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFPesquisarActionPerformed(evt);
             }
         });
 
+        JBPesquisar.setBackground(new java.awt.Color(204, 204, 204));
+        JBPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBPesquisar.setForeground(new java.awt.Color(51, 51, 51));
         JBPesquisar.setText("Pesquisar");
         JBPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +168,9 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
             }
         });
 
+        JBAplicarReducao.setBackground(new java.awt.Color(204, 204, 204));
+        JBAplicarReducao.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBAplicarReducao.setForeground(new java.awt.Color(51, 51, 51));
         JBAplicarReducao.setText("Aplicar Redução de Preço");
         JBAplicarReducao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +217,7 @@ public class FrmGerenciaEstoque extends javax.swing.JFrame {
                             .addComponent(JBAplicarReducao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 42, Short.MAX_VALUE)
+                        .addGap(0, 34, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(JTFPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)

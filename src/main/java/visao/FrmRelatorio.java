@@ -30,6 +30,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Relatório");
 
+        JBFechar.setBackground(new java.awt.Color(204, 204, 204));
+        JBFechar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBFechar.setForeground(new java.awt.Color(51, 51, 51));
         JBFechar.setText("Fechar");
         JBFechar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         JBFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -38,6 +41,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBLista.setBackground(new java.awt.Color(204, 204, 204));
+        JBLista.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBLista.setForeground(new java.awt.Color(51, 51, 51));
         JBLista.setText("Lista de preços");
         JBLista.setToolTipText("");
         JBLista.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +52,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBFalta.setBackground(new java.awt.Color(204, 204, 204));
+        JBFalta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBFalta.setForeground(new java.awt.Color(51, 51, 51));
         JBFalta.setText("Falta de produtos");
         JBFalta.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         JBFalta.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +63,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBBalanco.setBackground(new java.awt.Color(204, 204, 204));
+        JBBalanco.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBBalanco.setForeground(new java.awt.Color(51, 51, 51));
         JBBalanco.setText("Balanço físico");
         JBBalanco.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         JBBalanco.setMaximumSize(new java.awt.Dimension(97, 24));
@@ -64,6 +76,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBExcesso.setBackground(new java.awt.Color(204, 204, 204));
+        JBExcesso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBExcesso.setForeground(new java.awt.Color(51, 51, 51));
         JBExcesso.setText("Excesso de produtos");
         JBExcesso.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         JBExcesso.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +87,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBCategoria.setBackground(new java.awt.Color(204, 204, 204));
+        JBCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        JBCategoria.setForeground(new java.awt.Color(51, 51, 51));
         JBCategoria.setText("Produtos por categoria");
         JBCategoria.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         JBCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +98,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JTRelatorio.setBackground(new java.awt.Color(204, 204, 204));
+        JTRelatorio.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        JTRelatorio.setForeground(new java.awt.Color(51, 51, 51));
         JTRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -91,9 +112,11 @@ public class FrmRelatorio extends javax.swing.JFrame {
 
             }
         ));
+        JTRelatorio.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        JTRelatorio.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(JTRelatorio);
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatórios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 15))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatórios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(51, 51, 51))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

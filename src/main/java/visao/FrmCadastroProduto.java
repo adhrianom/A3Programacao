@@ -90,6 +90,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         setTitle("Cadastro de Produto");
 
         JBFechar.setBackground(new java.awt.Color(204, 204, 204));
+        JBFechar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBFechar.setForeground(new java.awt.Color(51, 51, 51));
         JBFechar.setText("Fechar");
         JBFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,21 +99,26 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 15), new java.awt.Color(51, 51, 51))); // NOI18N
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 16), new java.awt.Color(51, 51, 51))); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Nome:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Preço:");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Quantidade:");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Categoria:");
 
         JTFNome.setBackground(new java.awt.Color(204, 204, 204));
+        JTFNome.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         JTFNome.setForeground(new java.awt.Color(0, 0, 0));
         JTFNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,11 +127,14 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         });
 
         JTFPreco.setBackground(new java.awt.Color(204, 204, 204));
+        JTFPreco.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         JTFPreco.setForeground(new java.awt.Color(0, 0, 0));
 
         JTFQuantidade.setBackground(new java.awt.Color(204, 204, 204));
+        JTFQuantidade.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
 
         JTProduto.setBackground(new java.awt.Color(204, 204, 204));
+        JTProduto.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         JTProduto.setForeground(new java.awt.Color(51, 51, 51));
         JTProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,9 +144,12 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
                 "ID", "Nome", "Quantidade", "Medida", "Preço", "Categoria", "Qntd. Mínima", "Qntd. Máxima"
             }
         ));
+        JTProduto.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        JTProduto.setSelectionForeground(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(JTProduto);
 
         JBAdicionar.setBackground(new java.awt.Color(204, 204, 204));
+        JBAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBAdicionar.setForeground(new java.awt.Color(51, 51, 51));
         JBAdicionar.setText("Adicionar");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +159,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         });
 
         JBRemover.setBackground(new java.awt.Color(204, 204, 204));
+        JBRemover.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBRemover.setForeground(new java.awt.Color(51, 51, 51));
         JBRemover.setText("Remover");
         JBRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -155,30 +168,36 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Quantidade Minima:");
 
         JTFQuantidadeMinima.setBackground(new java.awt.Color(204, 204, 204));
+        JTFQuantidadeMinima.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         JTFQuantidadeMinima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFQuantidadeMinimaActionPerformed(evt);
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Quantidade Máxima:");
 
         JTFQuantidadeMaxima.setBackground(new java.awt.Color(204, 204, 204));
+        JTFQuantidadeMaxima.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         JTFQuantidadeMaxima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFQuantidadeMaximaActionPerformed(evt);
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Medida:");
 
         JCMedida.setBackground(new java.awt.Color(204, 204, 204));
+        JCMedida.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         JCMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unidade", "Kilogramas", "Gramas", "Litros", "Mililitros" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

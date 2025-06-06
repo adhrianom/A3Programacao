@@ -28,6 +28,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setTitle("Menu Principal");
 
         JBCadastroCategoria.setBackground(new java.awt.Color(204, 204, 204));
+        JBCadastroCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBCadastroCategoria.setForeground(new java.awt.Color(51, 51, 51));
         JBCadastroCategoria.setText("Cadastrar Categoria");
         JBCadastroCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -37,6 +38,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         JBCadastroProduto.setBackground(new java.awt.Color(204, 204, 204));
+        JBCadastroProduto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBCadastroProduto.setForeground(new java.awt.Color(51, 51, 51));
         JBCadastroProduto.setText("Cadastrar Produto");
         JBCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +48,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         JBGerenciaEstoque.setBackground(new java.awt.Color(204, 204, 204));
+        JBGerenciaEstoque.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBGerenciaEstoque.setForeground(new java.awt.Color(51, 51, 51));
         JBGerenciaEstoque.setText("Gerenciar Estoque");
         JBGerenciaEstoque.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +58,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         JBRelatorio.setBackground(new java.awt.Color(204, 204, 204));
+        JBRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBRelatorio.setForeground(new java.awt.Color(51, 51, 51));
         JBRelatorio.setText("Relatórios");
         JBRelatorio.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +68,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
 
         JBSair.setBackground(new java.awt.Color(204, 204, 204));
+        JBSair.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         JBSair.setForeground(new java.awt.Color(51, 51, 51));
         JBSair.setText("Sair");
         JBSair.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +77,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("CONTROLE DE ESTOQUE");
 
