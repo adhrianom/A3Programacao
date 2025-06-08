@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import modelo.Produto;
 import javax.swing.table.DefaultTableModel;
 import dao.ProdutoDAO;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,6 +29,9 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         carregarProdutos();
         JCCategoria = new JComboBox<>();
         JCCategoria.setBounds(600, 57, 150, 20); // ajuste as coordenadas
+        JCCategoria.setBackground(new Color(209, 209, 209));      // fundo escuro
+        JCCategoria.setForeground(Color.BLACK);   // texto claro
+        JCCategoria.setFont(new Font("Segoe UI Semibold", Font.PLAIN, 12)); // mesma fonte usada no JCMedida
         getContentPane().add(JCCategoria);
         carregarCategoria();
         this.produto = new Produto();
@@ -328,41 +333,41 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
             Categoria categoria = (Categoria) JCCategoria.getSelectedItem();
 
             Produto produto = new Produto();
-            if (this.JTFNome.getText().length() < 2){
+            if (this.JTFNome.getText().length() < 2) {
                 throw new Mensagem("O nome do produto deve conter no minimo 2 caractéres.");
             } else {
                 produto.setNome(nome);
             }
-            
-            if(JTFQuantidade.getText().trim().isEmpty()){
+
+            if (JTFQuantidade.getText().trim().isEmpty()) {
                 throw new Mensagem("Deve conter no minimo 1 produto.");
             } else {
                 int quantidadeEstoque = Integer.parseInt(JTFQuantidade.getText().trim());
                 produto.setQuantidadeEstoque(quantidadeEstoque);
             }
-            
-            if(JTFQuantidadeMinima.getText().trim().isEmpty()){
+
+            if (JTFQuantidadeMinima.getText().trim().isEmpty()) {
                 throw new Mensagem("A quantidade minima deve ser acima de 0.");
-            } else{
+            } else {
                 int quantidadeMinima = Integer.parseInt(JTFQuantidadeMinima.getText().trim());
                 produto.setQuantidadeMinima(quantidadeMinima);
             }
-            if(JTFQuantidadeMaxima.getText().trim().isEmpty()){
+            if (JTFQuantidadeMaxima.getText().trim().isEmpty()) {
                 throw new Mensagem("A quantidade máxima deve ser acima de 0.");
             } else {
                 int quantidadeMaxima = Integer.parseInt(JTFQuantidadeMaxima.getText().trim());
                 produto.setQuantidadeMaxima(quantidadeMaxima);
             }
-            if(JTFPreco.getText().trim().isEmpty()){
+            if (JTFPreco.getText().trim().isEmpty()) {
                 throw new Mensagem("O preço deve ser acima de R$ 0.");
             } else {
                 double preco = Double.parseDouble(JTFPreco.getText().trim());
                 produto.setPrecoUnitario(preco);
             }
-        
+
             produto.setUnidade(unidade);
             produto.setCategoria(categoria);
-            
+
             dao.inserir(produto);
             carregarProdutos();
             JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso!");
@@ -398,7 +403,6 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         }
     }
 
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
