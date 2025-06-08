@@ -2,6 +2,7 @@ package visao;
 
 import dao.ProdutoDAO;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Produto;
@@ -234,7 +235,7 @@ public class FrmRelatorio extends javax.swing.JFrame {
                     produto.getNome(),
                     produto.getPrecoUnitario(),
                     produto.getQuantidadeEstoque(),
-                    total
+                    String.format(Locale.US,"%.2f", total)
                 });
             }
 
