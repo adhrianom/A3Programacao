@@ -240,7 +240,7 @@ public class FrmRelatorio extends javax.swing.JFrame {
             }
 
             JTRelatorio.setModel(model);
-            JOptionPane.showMessageDialog(this, "Total em estoque: R$ " + totalGeral);
+            JOptionPane.showMessageDialog(this, "Total em estoque: R$ " + String.format(Locale.US,"%.2f", totalGeral));
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao gerar o relatório: " + e.getMessage());
